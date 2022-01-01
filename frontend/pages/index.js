@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Layout>
-          hello
+          <h1 className='text-red-500'>Talwind</h1>
         </Layout>
 
     </div>
