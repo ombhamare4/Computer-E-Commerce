@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 
 import styles from "./Header.module.css";
@@ -8,17 +10,26 @@ const Header = () => {
       <div className="grid grid-cols-4 gap-4 text-center p-2 md:block">
         <div className="flex justify-center items-center">
           <h1 className="text-4xl font-bold">
-            <span className="text-red-500">Big</span>-Market
+            <span className="text-red-500">J</span>upiter
             <span className="text-red-500">.</span>
+            <span>com</span>
           </h1>
         </div>
         <div className="col-span-2 flex justify-center items-center md:hidden">
-          <ul className="flex">
-            <li className={styles.btn1}>Home</li>
-            <li className={styles.btn1}>Catlog</li>
-            <li className={styles.btn1}>All Collection</li>
-            <li className={styles.btn1}>More</li>
-          </ul>
+          <div className="flex">
+            <div className={styles.btn1}>
+              <Link href="/">Home</Link>
+            </div>
+            <div className={styles.btn1 + " " + styles.dropdown}>
+              <Link href="/catlog">Catlog</Link>
+            </div>
+            <div className={styles.btn1}>
+              <Link href="/allcollections">All Collection</Link>
+            </div>
+            <div className={styles.btn1}>
+              <Link href="/customcomputer">Custom Computer</Link>
+            </div>
+          </div>
         </div>
         <div className="grid grid-cols-2  text-xl md:hidden">
           <div className="flex justify-center items-center">
@@ -26,7 +37,7 @@ const Header = () => {
             <span className="mx-2">Sign In</span>
           </div>
           <div className="flex justify-center items-center">
-            <FaShoppingCart  />
+            <FaShoppingCart />
             <span className="mx-2">Cart</span>
           </div>
         </div>
@@ -38,10 +49,7 @@ const Header = () => {
             className={styles.inputsearch}
             placeholder="Search Product here"
           />
-          <button
-            className={styles.btnsearch}
-            type="button"
-          >
+          <button className={styles.btnsearch} type="button">
             Search
           </button>
         </div>
