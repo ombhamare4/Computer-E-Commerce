@@ -4,6 +4,12 @@
     /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); */
 }
 
+@media only screen and (max-width: 768px) {
+  .headers {
+      border: none;
+    }
+}
+
 .inputsearch {
   border: 2px solid rgb(239 68 68);;
   border-left: 2px solid rgb(239 68 68);;
@@ -23,19 +29,6 @@
         border-bottom-left-radius: 8px;
         padding: 6px;
         /* max-width:800px ; */
-        outline: none;
-      }
-  }
-
-  @media only screen and (max-width: 639px) {
-    .inputsearch {
-        border: 2px solid rgb(239 68 68);;
-        border-left: 2px solid rgb(239 68 68);;
-        border-right:none;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        padding: 6px;
-        /* width: 200px; */
         outline: none;
       }
   }

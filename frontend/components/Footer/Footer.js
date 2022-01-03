@@ -1,11 +1,9 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { faCheckSquare, faCoffee,faTwitter } from '@fortawesome/free-solid-svg-icons'
-// library.add(faCheckSquare,faCoffee,faTwitter);
+import styles from "./Footer.module.css";
+
 import {
   FaTwitter,
   FaFacebook,
-  FaPinterest ,
+  FaPinterest,
   FaInstagram,
   FaLocationArrow,
   FaPhoneAlt,
@@ -14,7 +12,7 @@ import {
   FaCcAmex,
   FaPaypal,
   FaCcDiscover,
-  FaEnvelopeOpen
+  FaEnvelopeOpen,
 } from "react-icons/fa";
 
 import { MdEmail } from "react-icons/md";
@@ -22,25 +20,27 @@ import { MdEmail } from "react-icons/md";
 const Footer = () => {
   return (
     <div>
-      <div className=" bg-red-500 p-8 flex justify-between md:block md:justify-center">
-        <div className="text-center text-xl flex md:block font-extrabold">
-          {/* <i className="far fa-envelope-open text-white mr-2 mt-1"></i> */}
-          <FaEnvelopeOpen  className="text-white mr-2 mt-1"/>
-          <h1 className="text-white ">Sign Up For Newsletter</h1>
+      <div className=" flex justify-between bg-red-500 p-8 md:block item-center text-center">
+        <div className="mb-3">
+          <h1 className="text-white flex items-center justify-center text-2xl ">
+            <span>
+              <FaEnvelopeOpen className="text-white mr-3" />
+            </span>
+            Sign Up For Newsletter
+          </h1>
         </div>
-        <div className="md:mt-4 text-center">
-          <input className="p-4 rounded-l-lg" type="email"
+
+        <div className="flex">
+          <input
+            className={styles.inputsearch}
             placeholder="email@example.com"
             name="contact[email]"
             id="Email"
-            className="input-group-field"
+            // className="input-group-field"
             aria-label="email@example.com"
           />
-          <button
-            className="bg-yellow-500 p-2 rounded-r-lg text-white"
-            type="button"
-          >
-            Subscribe
+          <button className={styles.btnsearch} type="button">
+            Search
           </button>
         </div>
       </div>
@@ -140,16 +140,16 @@ const Footer = () => {
             <h1>Store Information</h1>
             <div className="my-3 text-gray-400  ">
               <div className="flex md:justify-center">
-                <FaLocationArrow className="mt-1 mr-2 text-xl"/>
+                <FaLocationArrow className="mt-1 mr-2 text-xl" />
                 <p>My Company, 42 Puffin street 12345 Puffinville France</p>
               </div>
               <div className="flex md:justify-center ">
                 <i className="fas fa-phone-alt mt-2 mr-2"></i>
-                <FaPhoneAlt className="mt-1 mr-2 text-sm"/>
+                <FaPhoneAlt className="mt-1 mr-2 text-sm" />
                 <p>0123-456-789</p>
               </div>
               <div className="flex md:justify-center">
-                <MdEmail className="mt-2 mr-2"/>
+                <MdEmail className="mt-2 mr-2" />
                 <p>sales@company.com</p>
               </div>
             </div>
@@ -159,11 +159,11 @@ const Footer = () => {
 
       <div>
         <div className="p-5 flex justify-center text-2xl">
-          <FaCcVisa className="mx-2"/>
-          <FaCcMastercard className="mx-2"/>
-          <FaCcAmex className="mx-2"/>
-          <FaPaypal className="mx-2"/>
-          <FaCcDiscover className="mx-2"/>
+          <FaCcVisa className="mx-2" />
+          <FaCcMastercard className="mx-2" />
+          <FaCcAmex className="mx-2" />
+          <FaPaypal className="mx-2" />
+          <FaCcDiscover className="mx-2" />
         </div>
       </div>
 
@@ -176,16 +176,16 @@ const Footer = () => {
               <FontAwesomeIcon icon="faTwitter"/> */}
               {/* <i className="fab fa-twitter mx-2"></i>
                 <FontAwesomeIcon icon={"faCoffee"} /> */}
-                <FaTwitter className="mx-2 text-xl"/>
+              <FaTwitter className="mx-2 text-xl" />
             </li>
             <li>
               <FaFacebook className="mx-2 text-xl" />
             </li>
             <li>
-              <FaPinterest className="mx-2 text-xl"/>
+              <FaPinterest className="mx-2 text-xl" />
             </li>
             <li>
-              <FaInstagram className="mx-2 text-xl"/>
+              <FaInstagram className="mx-2 text-xl" />
             </li>
           </ul>
         </div>
