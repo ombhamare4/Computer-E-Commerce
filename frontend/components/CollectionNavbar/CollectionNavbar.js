@@ -14,8 +14,8 @@ Monitor
 
 const CollectionNavbar = ()=>{
     return(
-        <div>
-            <ul className="flex justify-evenly md:block bg-red-200">
+        <div className="border-b-2 border-red-500">
+            <ul className="flex justify-evenly md:block md:bg-red-200 shadow-xl">
                 <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">CPU</li>
                 <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Mother Board</li>
                 <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">CPU Cooler</li>

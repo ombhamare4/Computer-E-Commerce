@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <div>
       <div className=" flex justify-between bg-red-500 p-8 md:block item-center text-center">
-        <div className="mb-3">
+        <div className="md:mb-3">
           <h1 className="text-white flex items-center justify-center text-2xl ">
             <span>
               <FaEnvelopeOpen className="text-white mr-3" />
@@ -169,13 +169,9 @@ const Footer = () => {
 
       <div>
         <div className="p-2 bg-gray-200 flex justify-between  md:block md:text-center">
-          <p>Copyright © 2021 theme-biggmarket | Powered by Shopify</p>
+          <p>Copyright © 2021 theme-biggmarket | Powered by Code Knights</p>
           <ul className="flex md:justify-center mx-2">
             <li>
-              {/* <FontAwesomeIcon icon="check-square"/>
-              <FontAwesomeIcon icon="faTwitter"/> */}
-              {/* <i className="fab fa-twitter mx-2"></i>
-                <FontAwesomeIcon icon={"faCoffee"} /> */}
               <FaTwitter className="mx-2 text-xl" />
             </li>
             <li>
