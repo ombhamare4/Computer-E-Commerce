@@ -13,6 +13,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
+li{
+  cursor: pointer;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -21,5 +25,4 @@ a {
 * {
   box-sizing: border-box;
 }
-
 

@@ -1,25 +1,62 @@
+.headers{
+    padding: 10px;
+    border-bottom: 2px solid rgb(239 68 68);;
+    /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); */
+}
+
 .inputsearch {
-  border: 2px solid red;
-  border-left: 2px solid red;
+  border: 2px solid rgb(239 68 68);;
+  border-left: 2px solid rgb(239 68 68);;
   border-right:none;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   padding: 6px;
-  width: 600px;
+  width: 100%;
   outline: none;
 }
 @media only screen and (max-width: 768px) {
     .inputsearch {
-        border: 2px solid red;
-        border-left: 2px solid red;
+        border: 2px solid rgb(239 68 68);;
+        border-left: 2px solid rgb(239 68 68);;
         border-right:none;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
         padding: 6px;
-        width: 300px;
+        /* max-width:800px ; */
         outline: none;
       }
   }
+
+  @media only screen and (max-width: 639px) {
+    .inputsearch {
+        border: 2px solid rgb(239 68 68);;
+        border-left: 2px solid rgb(239 68 68);;
+        border-right:none;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        padding: 6px;
+        /* width: 200px; */
+        outline: none;
+      }
+  }
+
+.collectionnavbar{
+    /* padding-inline: 20px; */
+    margin-top: 10px;
+}
+  @media only screen and (min-width: 769px) {
+    .collectionnavbar {
+       display: none;
+      }
+  }
+
+  @media only screen and (max-width: 769px) {
+    .collections {
+       display: none;
+      }
+  }
+
+
 .btn1{
     font-size: 20px;
     background-color:rgba(255, 255, 255, 0);
@@ -37,12 +74,12 @@
 
 .btn1:hover{
     color:white;
-    background-color: red;
+    background-color: rgb(239 68 68);;
     box-shadow: inset 150px 0 0 0 rgb(255, 87, 87);
 }
 
 .btnsearch{
-    background-color: red;
+    background-color: rgb(239 68 68);;
     color: white;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
