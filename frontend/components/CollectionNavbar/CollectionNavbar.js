@@ -1,3 +1,7 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+import styles from "./CollectionNavabr.module.css"
 /*
 Collection List:
 CPU
@@ -12,24 +16,64 @@ Operating System
 Monitor
 */
 
-const CollectionNavbar = ()=>{
-    return(
-        <div className="border-b-2 border-red-500">
-            <ul className="flex justify-evenly md:block md:bg-red-200 shadow-xl">
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500 md:visible">All Collections</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">CPU</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Mother Board</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">CPU Cooler</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Memory</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Storage</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Video Card</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Case</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Power Supply</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Opearting System</li>
-                <li className="p-2 hover:bg-red-500  transition ease-in-out  duration-500">Monitor</li>
-            </ul>
-        </div>
-    )
+const Collections = [
+  {
+    id: 1,
+    name: "CPU",
+  },
+  {
+    id: 2,
+    name: "CPU Cooler",
+  },
+  {
+    id: 3,
+    name: "Mother Board",
+  },
+  {
+    id: 4,
+    name: "Memory",
+  },
+  {
+    id: 5,
+    name: "Storage",
+  },
+  {
+    id: 6,
+    name: "Video Card",
+  },
+  {
+    id: 7,
+    name: "Power Supply",
+  },
+  {
+    id: 8,
+    name: "Operating System",
+  },
+  {
+    id: 9,
+    name: "Monitor",
+  },
+];
+
+const CollectionNavbar = () => {
+  const router = useRouter();
+
+  return (
+    <div className="border-b-2 border-red-500">
+      <ul className="flex justify-evenly md:block md:bg-red-200 shadow-xl">
+        {Collections.map((collections) => (
+          <li
+            className={styles.btn1}
+            key={collections.id}
+          >
+            <Link href={`/collections/${encodeURIComponent(collections.name)}`}>
+              {collections.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default CollectionNavbar;
