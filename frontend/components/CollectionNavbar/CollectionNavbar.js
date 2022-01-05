@@ -18,6 +18,10 @@ Monitor
 
 const Collections = [
   {
+    id: 10,
+    name: "All",
+  },
+  {
     id: 1,
     name: "CPU",
   },
@@ -27,7 +31,7 @@ const Collections = [
   },
   {
     id: 3,
-    name: "Mother Board",
+    name: "Motherboard",
   },
   {
     id: 4,
@@ -39,7 +43,7 @@ const Collections = [
   },
   {
     id: 6,
-    name: "Video Card",
+    name: "Graphics Card",
   },
   {
     id: 7,

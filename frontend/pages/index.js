@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
         <Layout>
-          <h1 className='text-red-500'>Talwind</h1>
+          {/* <h1 className='text-red-500'>Talwind</h1> */}
         </Layout>
 
     </div>
