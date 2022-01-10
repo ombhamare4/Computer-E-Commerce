@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import Layout from "../../../components/Layout/Layout";
-import AllCollectionsDetails from "../../../components/AllCollectionsDetails/AllCollectionsDetails";
+import Layout from "../../components/Layout/Layout";
+import AllCollectionsDetails from "../../components/AllCollectionsDetails/AllCollectionsDetails";
 
 const AllCollectionPage = () => {
   const router = useRouter();
@@ -16,6 +16,7 @@ const AllCollectionPage = () => {
       </Head>
 
       <AllCollectionsDetails collectionName={collectionName} />
+
     </Layout>
   );
 };

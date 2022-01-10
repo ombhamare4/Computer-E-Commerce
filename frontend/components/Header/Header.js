@@ -34,9 +34,9 @@ const Header = () => {
               <div className={styles.btn1}>
                 <Link href="/">Home</Link>
               </div>
-              {/* <div className={styles.btn1 + " " + styles.dropdown}>
+              <div className={styles.btn1 + " " + styles.dropdown}>
                 <Link href="/catlog">Catlog</Link>
-              </div> */}
+              </div>
               <div className={styles.btn1}>
                 <Link href="/collections">All Collection</Link>
               </div>
@@ -105,6 +105,7 @@ const Header = () => {
       <div className={styles.collections}>
         <CollectionNavbar id="collectionnavbar" />
       </div>
+
     </div>
   );
 };

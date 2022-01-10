@@ -1,0 +1,21 @@
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.overflow {
+  white-space: nowrap;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn{
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

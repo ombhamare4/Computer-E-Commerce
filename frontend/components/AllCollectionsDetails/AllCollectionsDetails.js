@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 
 import ProductList from "../ProductsTest/ProductList";
+import styles from "./AllCollection.module.css";
+
+import { CgMenuGridR, CgLayoutList } from "react-icons/cg";
+
 const products = [
   //CPU
   {
@@ -9,6 +13,7 @@ const products = [
     price: "70000",
     comparedPrice: "90000",
     category: "CPU",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 2,
@@ -16,6 +21,7 @@ const products = [
     price: "7939",
     comparedPrice: "9870",
     category: "CPU",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 3,
@@ -23,6 +29,7 @@ const products = [
     price: "14,990",
     comparedPrice: "24999",
     category: "CPU",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //Cooler
@@ -32,6 +39,7 @@ const products = [
     price: "4999",
     comparedPrice: "5999",
     category: "CPU Cooler",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 5,
@@ -39,6 +47,7 @@ const products = [
     price: "1525",
     comparedPrice: "9870",
     category: "CPU Cooler",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //MotherBoard
@@ -48,6 +57,7 @@ const products = [
     price: "11300",
     comparedPrice: "16300",
     category: "motherboard",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 7,
@@ -55,6 +65,7 @@ const products = [
     price: "24949",
     comparedPrice: "37000",
     category: "motherboard",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 8,
@@ -62,6 +73,7 @@ const products = [
     price: "4990",
     comparedPrice: "8800",
     category: "motherboard",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 9,
@@ -69,6 +81,7 @@ const products = [
     price: "20499",
     comparedPrice: "24949",
     category: "motherboard",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //Memory
@@ -78,6 +91,7 @@ const products = [
     price: "2830",
     comparedPrice: "4100",
     category: "memory",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //Storage
@@ -88,6 +102,7 @@ const products = [
     comparedPrice: "7800",
     category: "storage",
     subcategory: "ssd",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 12,
@@ -96,6 +111,7 @@ const products = [
     comparedPrice: "13500",
     category: "storage",
     subcategory: "sdd",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 13,
@@ -104,6 +120,7 @@ const products = [
     comparedPrice: "7800",
     category: "storage",
     subcategory: "hdd",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   //Video Card
   {
@@ -112,6 +129,7 @@ const products = [
     price: "85999",
     comparedPrice: "7800",
     category: "graphics card",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 15,
@@ -119,6 +137,7 @@ const products = [
     price: "26628",
     comparedPrice: "45000",
     category: "graphics card",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //Power Supply
@@ -128,6 +147,7 @@ const products = [
     price: "3199",
     comparedPrice: "5499",
     category: "power supply",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //OS
@@ -137,6 +157,7 @@ const products = [
     price: "13,300",
     comparedPrice: "22,799",
     category: "operatingsystem",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
   {
     id: 18,
@@ -144,6 +165,7 @@ const products = [
     price: "9826",
     comparedPrice: "11999",
     category: "operatingsystem",
+    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
   },
 
   //monitor
@@ -153,8 +175,108 @@ const AllCollectionsDetails = (props) => {
   const collectionname = router.query.collectionId;
 
   return (
-    <div className="bg-white">
-      <ProductList products={products} collectionname={collectionname}/>
+    <div className="bg-white shadow-2xl ">
+      <div className="bg-gray-300 p-3">
+        <h1 className="text-2xl">Products</h1>
+      </div>
+
+      <div className="grid grid-cols-4 gap-5 p-5">
+        <div>
+          <div className="shadow-xl rounded-md border border-red-400 p-1">
+            <h1 className="p-2 bg-red-500 text-white rounded-md mb-1">
+              Shop By Price
+            </h1>
+            <div className="p-2">
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> Rs.1000~Rs.10000
+                </label>
+              </div>
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> Rs.10000~Rs.25000
+                </label>
+              </div>
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> Rs.2500~Rs.50000
+                </label>
+              </div>
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> Rs.50000+
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-xl rounded-md border border-red-400 p-1 mt-4">
+            <h1 className="p-2 bg-red-500 text-white rounded-md mb-1">
+              Shop By Collections
+            </h1>
+            <div className="p-2">
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> CPU
+                </label>
+              </div>
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> RAM
+                </label>
+              </div>
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> HDD
+                </label>
+              </div>
+              <div className="mb-1">
+                <label>
+                  <input type="radio" name="radio" /> Graphics Card
+                </label>
+              </div>
+              <div>
+                <h1 className="text-right text-red-500">More</h1>
+              </div>
+            </div>
+          </div>
+          <div className="shadow-xl rounded-md border border-red-400 p-1 mt-4">
+            <img
+              className="relative"
+              src="https://cdn.shopify.com/s/files/1/0195/8916/9252/files/right-banner_16edbb4f-87b7-4602-a5ca-fea9c0ff5c4b_320x.jpg?v=1556857605"
+            />
+          </div>
+        </div>
+
+        <div className="col-span-3">
+          <div>
+            <h1 className="text-xl p-2">Products</h1>
+            <div className="p-2 border border-red-500 rounded-md flex justify-between items-center">
+              <div className="flex">
+                <button>
+                  <CgMenuGridR className="border border-gray-500 rounded-md text-4xl p-1 mx-2" />
+                </button>
+                <button>
+                  <CgLayoutList className="border border-gray-500 rounded-md text-4xl p-1 mx-2" />
+                </button>
+              </div>
+              <div className="flex">
+                <h1 className="mx-2">Sort By:</h1>
+                <select className="mx-2 border border-red-500 rounded-sm w-44 hover:border-red-500">
+                  <option value="0" className="hover:bg-red-400">Featured</option>
+                  <option value="1">Price, Low to High</option>
+                  <option value="2">Price, High to Low</option>
+                  <option value="3">Alphabetically, A-Z</option>
+                  <option value="4">Alphabetically, Z-A</option>
+                  <option value="5">Date, old to new</option>
+                  <option value="6">Date, new to old</option>
+                  <option value="7">Best Selling</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <ProductList products={products} collectionname={collectionname} />
+        </div>
+      </div>
     </div>
   );
 };
