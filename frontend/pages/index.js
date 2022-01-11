@@ -6,6 +6,8 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 //Componensts Import Here
 import Layout from '../components/Layout/Layout'
+import SignIn from './signin'
+
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
       </Head>
         <Layout>
           {/* <h1 className='text-red-500'>Talwind</h1> */}
+          <SignIn/>
         </Layout>
 
     </div>
