@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
-
+import ReactPaginate from "react-paginate";
 import ProductList from "../ProductsTest/ProductList";
 import styles from "./AllCollection.module.css";
 
@@ -171,8 +172,23 @@ const products = [
   //monitor
 ];
 const AllCollectionsDetails = (props) => {
+  const [changeView, setChangedView] = useState(false);
   const router = useRouter();
   const collectionname = router.query.collectionId;
+
+  const gridViewHandler = () => {
+    console.log("Grid View Click");
+    setChangedView(true);
+  };
+
+  const listViewHandler = () => {
+    console.log("List View Click");
+    setChangedView(false);
+  };
+
+  const handlePageClick = (event)=>{
+    console.log("clicked"+event.selected);
+  }
 
   return (
     <div className="bg-white shadow-2xl ">
@@ -252,10 +268,10 @@ const AllCollectionsDetails = (props) => {
             <h1 className="text-xl p-2">Products</h1>
             <div className="p-2 border border-red-500 rounded-md flex justify-between items-center">
               <div className="flex">
-                <button>
+                <button onClick={gridViewHandler}>
                   <CgMenuGridR className="border border-gray-500 rounded-md text-4xl p-1 mx-2" />
                 </button>
-                <button>
+                <button onClick={listViewHandler}>
                   <CgLayoutList className="border border-gray-500 rounded-md text-4xl p-1 mx-2" />
                 </button>
               </div>
@@ -276,8 +292,24 @@ const AllCollectionsDetails = (props) => {
               </div>
             </div>
           </div>
-          <ProductList products={products}/>
-          <div>
+          <ProductList products={products} changeView={changeView} />
+          <div className="max-w-8xl mx-auto container py-10 text-right">
+            <ReactPaginate className="flex"
+            previousLabel={"<"}
+            breakLabel={"..."}
+            nextLabel={">"}
+            pageCount={15}
+            marginPagesDisplayed={4}
+            pageRangeDisplayed={3}
+            onPageChange={handlePageClick}
+            containerClassName={`flex justify-center items-center`}
+            pageClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
+            previousClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
+            nextClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
+            breakClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
+           />
+          </div>
+          {/* <div>
             <div className="max-w-8xl mx-auto container py-10 text-right">
               <ul className="flex justify-center items-center">
                 <li>
@@ -343,7 +375,7 @@ const AllCollectionsDetails = (props) => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
