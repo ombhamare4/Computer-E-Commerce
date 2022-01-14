@@ -173,22 +173,21 @@ const products = [
 ];
 const AllCollectionsDetails = (props) => {
   const [changeView, setChangedView] = useState(false);
+  const [items, setItems] = useState([]);
   const router = useRouter();
   const collectionname = router.query.collectionId;
 
   const gridViewHandler = () => {
-    console.log("Grid View Click");
     setChangedView(true);
   };
 
   const listViewHandler = () => {
-    console.log("List View Click");
     setChangedView(false);
   };
 
-  const handlePageClick = (event)=>{
-    console.log("clicked"+event.selected);
-  }
+  const handlePageClick = (event) => {
+    console.log("clicked" + event.selected);
+  };
 
   return (
     <div className="bg-white shadow-2xl ">
@@ -294,20 +293,30 @@ const AllCollectionsDetails = (props) => {
           </div>
           <ProductList products={products} changeView={changeView} />
           <div className="max-w-8xl mx-auto container py-10 text-right">
-            <ReactPaginate className="flex"
-            previousLabel={"<"}
-            breakLabel={"..."}
-            nextLabel={">"}
-            pageCount={15}
-            marginPagesDisplayed={4}
-            pageRangeDisplayed={3}
-            onPageChange={handlePageClick}
-            containerClassName={`flex justify-center items-center`}
-            pageClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
-            previousClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
-            nextClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
-            breakClassName={'flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none'}
-           />
+            <ReactPaginate
+              className="flex"
+              previousLabel={"<"}
+              breakLabel={"..."}
+              nextLabel={">"}
+              pageCount={15}
+              marginPagesDisplayed={4}
+              pageRangeDisplayed={3}
+              onPageChange={handlePageClick}
+              containerClassName={`flex justify-center items-center`}
+              pageClassName={
+                "flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none"
+              }
+              previousClassName={
+                "flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none"
+              }
+              nextClassName={
+                "flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none"
+              }
+              breakClassName={
+                "flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none"
+              }
+              activeClassName={"bg-red-500 text-white"}
+            />
           </div>
           {/* <div>
             <div className="max-w-8xl mx-auto container py-10 text-right">
