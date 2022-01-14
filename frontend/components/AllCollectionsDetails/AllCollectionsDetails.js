@@ -1,6 +1,19 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import ReactPaginate from "react-paginate";
+// import React from 'react';
+// import OwlCarousel from "react-owl-carousel";
+//frontend\\node_modules\\react-owl-carousel\\umd\\OwlCarousel.d.ts
+// const  OwlCarousel = dynamic(() => import("../../node_modules/react-owl-carousel/umd/OwlCarousel"), { ssr: false });
+// import "owl.carousel/dist/assets/owl.carousel.css";
+// import "owl.carousel/dist/assets/owl.theme.default.css";
+// import "owl.carousel/dist/assets/owl.carousel.css";
+// import "owl.carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+const OwlCarousel = dynamic(import("react-owl-carousel"), {ssr: false});
+
 import ProductList from "../ProductsTest/ProductList";
 import styles from "./AllCollection.module.css";
 
@@ -172,6 +185,13 @@ const products = [
   //monitor
 ];
 const AllCollectionsDetails = (props) => {
+  // const carousel = () => {
+  //   new OwlCarousel();
+  // };
+  // useEffect(() => {
+  //   carousel();
+  // }, []);
+
   const [changeView, setChangedView] = useState(false);
   const [items, setItems] = useState([]);
   const router = useRouter();
@@ -195,8 +215,8 @@ const AllCollectionsDetails = (props) => {
         <h1 className="text-2xl">Products</h1>
       </div>
 
-      <div className="grid grid-cols-4 gap-5 p-5">
-        <div>
+      <div className="grid grid-cols-4 gap-5 p-5 lg:block">
+        <div className="lg:hidden">
           <div className="shadow-xl rounded-md border border-red-400 p-1">
             <h1 className="p-2 bg-red-500 text-white rounded-md mb-1">
               Shop By Price
@@ -260,6 +280,48 @@ const AllCollectionsDetails = (props) => {
               src="https://cdn.shopify.com/s/files/1/0195/8916/9252/files/right-banner_16edbb4f-87b7-4602-a5ca-fea9c0ff5c4b_320x.jpg?v=1556857605"
             />
           </div>
+          {/* <div>
+                <h1>carousel</h1>
+                <OwlCarousel className='owl-theme' loop autoplay="true" margin={5} nav dots animateOut>
+                  <div class="item">
+                    <h4>1</h4>
+                  </div>
+                  <div class="item">
+                    <h4>2</h4>
+                  </div>
+                  <div class="item">
+                    <h4>3</h4>
+                  </div>
+                  <div class="item">
+                    <h4>4</h4>
+                  </div>
+                  <div class="item">
+                    <h4>5</h4>
+                  </div>
+                  <div class="item">
+                    <h4>6</h4>
+                  </div>
+                  <div class="item">
+                    <h4>7</h4>
+                  </div>
+                  <div class="item">
+                    <h4>8</h4>
+                  </div>
+                  <div class="item">
+                    <h4>9</h4>
+                  </div>
+                  <div class="item">
+                    <h4>10</h4>
+                  </div>
+                  <div class="item">
+                    <h4>11</h4>
+                  </div>
+                  <div class="item">
+                    <h4>12</h4>
+                  </div>
+                </OwlCarousel>
+
+              </div> */}
         </div>
 
         <div className="col-span-3">

@@ -7,6 +7,9 @@ import styles from '../styles/Home.module.css'
 //Componensts Import Here
 import Layout from '../components/Layout/Layout'
 import SignIn from './signin'
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
 
 
 export default function Home() {

@@ -25,7 +25,6 @@ const VProductCard = (props) => {
         </p>
 
         <div className="flex justify-center  items-center">
-          {}
           <FaStar className="text-xl  rounded-full text-yellow-500" />
           <FaStar className="text-xl  rounded-full text-yellow-500" />
           <FaStar className="text-xl  rounded-full text-yellow-500" />
