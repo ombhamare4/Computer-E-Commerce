@@ -28,7 +28,7 @@ const products = [
     price: "7939",
     comparedPrice: "9870",
     category: "CPU",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/71rkvn6ASDL._AC_UY218_.jpg",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const products = [
     price: "14,990",
     comparedPrice: "24999",
     category: "CPU",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/61CSx8SOBXL._AC_UY218_.jpg",
   },
 
   //Cooler
@@ -54,7 +54,7 @@ const products = [
     price: "1525",
     comparedPrice: "9870",
     category: "CPU Cooler",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/51gMmADy+OS._AC_UY218_.jpg",
   },
 
   //MotherBoard
@@ -64,7 +64,7 @@ const products = [
     price: "11300",
     comparedPrice: "16300",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/71JEcduJrXL._AC_UY218_.jpg",
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const products = [
     price: "24949",
     comparedPrice: "37000",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/71V3xOm6zVL._AC_UY218_.jpg",
   },
   {
     id: 8,
@@ -80,7 +80,7 @@ const products = [
     price: "4990",
     comparedPrice: "8800",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81lTPWJ+QZL._AC_UY218_.jpg",
   },
   {
     id: 9,
@@ -88,7 +88,7 @@ const products = [
     price: "20499",
     comparedPrice: "24949",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/511QDSquq0L._AC_UY218_.jpg",
   },
 
   //Memory
@@ -98,7 +98,7 @@ const products = [
     price: "2830",
     comparedPrice: "4100",
     category: "memory",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81njJG57-FL._AC_UY218_.jpg",
   },
 
   //Storage
@@ -118,7 +118,7 @@ const products = [
     comparedPrice: "13500",
     category: "storage",
     subcategory: "sdd",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/91gpmhtA+KL._AC_UY218_.jpgg",
   },
   {
     id: 13,
@@ -127,7 +127,7 @@ const products = [
     comparedPrice: "7800",
     category: "storage",
     subcategory: "hdd",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81rOuSWZtvL._AC_UY218_.jpg",
   },
   //Video Card
   {
@@ -136,7 +136,7 @@ const products = [
     price: "85999",
     comparedPrice: "7800",
     category: "graphics card",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81Vr3jzftaL._AC_UL320_.jpg",
   },
   {
     id: 15,
@@ -144,7 +144,7 @@ const products = [
     price: "26628",
     comparedPrice: "45000",
     category: "graphics card",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/61ItfhQmaFL._AC_UL320_.jpg",
   },
 
   //Power Supply
@@ -154,7 +154,7 @@ const products = [
     price: "3199",
     comparedPrice: "5499",
     category: "power supply",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/61B+PQExFWL._AC_UL320_.jpg",
   },
 
   //OS
@@ -164,7 +164,7 @@ const products = [
     price: "13,300",
     comparedPrice: "22,799",
     category: "operatingsystem",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81mLxU0CcAL._AC_UL320_.jpg",
   },
   {
     id: 18,
@@ -172,7 +172,7 @@ const products = [
     price: "9826",
     comparedPrice: "11999",
     category: "operatingsystem",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/914o5xV1+8L._AC_UL320_.jpg",
   },
 
   //monitor
@@ -247,7 +247,7 @@ const AllCollectionsDetails = (props) => {
   const [isPriceSelected, setIsPriceSelected] = useState(true);
   const [isSortSelected, setIsSortSelected] = useState(true);
 
-  const [changeView, setChangedView] = useState(false);
+  const [changeView, setChangedView] = useState(true);
   const [items, setItems] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
 
@@ -357,13 +357,11 @@ const AllCollectionsDetails = (props) => {
     //       console.log("Unknow Error Occurs");
     //   }
     // }
-
   };
 
   useEffect(() => {
     setSortedProducts(SortByPrice());
   }, [priceSort, isPriceSelected]); //sortSelected,  isSortSelected
-
 
   return (
     <div className="bg-white shadow-2xl ">
@@ -453,48 +451,37 @@ const AllCollectionsDetails = (props) => {
               src="https://cdn.shopify.com/s/files/1/0195/8916/9252/files/right-banner_16edbb4f-87b7-4602-a5ca-fea9c0ff5c4b_320x.jpg?v=1556857605"
             />
           </div>
-          {/* <div>
-                <h1>carousel</h1>
-                <OwlCarousel className='owl-theme' loop autoplay="true" margin={5} nav dots animateOut>
-                  <div class="item">
-                    <h4>1</h4>
-                  </div>
-                  <div class="item">
-                    <h4>2</h4>
-                  </div>
-                  <div class="item">
-                    <h4>3</h4>
-                  </div>
-                  <div class="item">
-                    <h4>4</h4>
-                  </div>
-                  <div class="item">
-                    <h4>5</h4>
-                  </div>
-                  <div class="item">
-                    <h4>6</h4>
-                  </div>
-                  <div class="item">
-                    <h4>7</h4>
-                  </div>
-                  <div class="item">
-                    <h4>8</h4>
-                  </div>
-                  <div class="item">
-                    <h4>9</h4>
-                  </div>
-                  <div class="item">
-                    <h4>10</h4>
-                  </div>
-                  <div class="item">
-                    <h4>11</h4>
-                  </div>
-                  <div class="item">
-                    <h4>12</h4>
-                  </div>
-                </OwlCarousel>
-
-              </div> */}
+          <div>
+            <h1>carousel</h1>
+            <OwlCarousel
+              className="owl-theme owl-carousel"
+              loop
+              autoplay="true"
+              margin={5}
+              nav
+              dots
+             items={1}
+            >
+              <div className="item">
+                <h4>1</h4>
+              </div>
+              <div class="item">
+                <h4>2</h4>
+              </div>
+              <div class="item">
+                <h4>3</h4>
+              </div>
+              <div class="item">
+                <h4>4</h4>
+              </div>
+              <div class="item">
+                <h4>5</h4>
+              </div>
+              <div class="item">
+                <h4>6</h4>
+              </div>
+            </OwlCarousel>
+          </div>
         </div>
 
         <div className="col-span-3">

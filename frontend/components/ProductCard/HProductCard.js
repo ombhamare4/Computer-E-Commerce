@@ -1,12 +1,11 @@
 import Link from "next/link";
-
 import styles from "./VProduct.module.css";
 
 import { FaRegHeart, FaRegEye, FaRegStar, FaStar } from "react-icons/fa";
 
 const HProductCard = (props) => {
   return (
-    <div>
+    <Link href={`products/${props.id}`}>
       <div className="grid grid-cols-3 p-2 my-2 border border-t-2  xs:text-sm  md:text-md lg:text-lg hover:shadow-xl hover:rounded-lg transition-all duration-500 ease-in-out hover:scale-105 ">
         <div className=" p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover">
           <img
@@ -38,7 +37,7 @@ const HProductCard = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

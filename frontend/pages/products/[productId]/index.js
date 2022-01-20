@@ -20,7 +20,7 @@ const productslist = [
     price: "7939",
     comparedPrice: "9870",
     category: "CPU",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/71rkvn6ASDL._AC_UY218_.jpg",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const productslist = [
     price: "14,990",
     comparedPrice: "24999",
     category: "CPU",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/61CSx8SOBXL._AC_UY218_.jpg",
   },
 
   //Cooler
@@ -46,7 +46,7 @@ const productslist = [
     price: "1525",
     comparedPrice: "9870",
     category: "CPU Cooler",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/51gMmADy+OS._AC_UY218_.jpg",
   },
 
   //MotherBoard
@@ -56,7 +56,7 @@ const productslist = [
     price: "11300",
     comparedPrice: "16300",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/71JEcduJrXL._AC_UY218_.jpg",
   },
   {
     id: 7,
@@ -64,7 +64,7 @@ const productslist = [
     price: "24949",
     comparedPrice: "37000",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/71V3xOm6zVL._AC_UY218_.jpg",
   },
   {
     id: 8,
@@ -72,7 +72,7 @@ const productslist = [
     price: "4990",
     comparedPrice: "8800",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81lTPWJ+QZL._AC_UY218_.jpg",
   },
   {
     id: 9,
@@ -80,7 +80,7 @@ const productslist = [
     price: "20499",
     comparedPrice: "24949",
     category: "motherboard",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/511QDSquq0L._AC_UY218_.jpg",
   },
 
   //Memory
@@ -90,7 +90,7 @@ const productslist = [
     price: "2830",
     comparedPrice: "4100",
     category: "memory",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81njJG57-FL._AC_UY218_.jpg",
   },
 
   //Storage
@@ -110,7 +110,7 @@ const productslist = [
     comparedPrice: "13500",
     category: "storage",
     subcategory: "sdd",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/91gpmhtA+KL._AC_UY218_.jpgg",
   },
   {
     id: 13,
@@ -119,7 +119,7 @@ const productslist = [
     comparedPrice: "7800",
     category: "storage",
     subcategory: "hdd",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81rOuSWZtvL._AC_UY218_.jpg",
   },
   //Video Card
   {
@@ -128,7 +128,7 @@ const productslist = [
     price: "85999",
     comparedPrice: "7800",
     category: "graphics card",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81Vr3jzftaL._AC_UL320_.jpg",
   },
   {
     id: 15,
@@ -136,7 +136,7 @@ const productslist = [
     price: "26628",
     comparedPrice: "45000",
     category: "graphics card",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/61ItfhQmaFL._AC_UL320_.jpg",
   },
 
   //Power Supply
@@ -146,7 +146,7 @@ const productslist = [
     price: "3199",
     comparedPrice: "5499",
     category: "power supply",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/61B+PQExFWL._AC_UL320_.jpg",
   },
 
   //OS
@@ -156,7 +156,7 @@ const productslist = [
     price: "13,300",
     comparedPrice: "22,799",
     category: "operatingsystem",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/81mLxU0CcAL._AC_UL320_.jpg",
   },
   {
     id: 18,
@@ -164,7 +164,7 @@ const productslist = [
     price: "9826",
     comparedPrice: "11999",
     category: "operatingsystem",
-    image: "https://m.media-amazon.com/images/I/61pI7loWpZS._SL1339_.jpg",
+    image: "https://m.media-amazon.com/images/I/914o5xV1+8L._AC_UL320_.jpg",
   },
 
   //monitor
@@ -177,11 +177,11 @@ const products = () => {
 
   const result = productslist.find(({ id }) => String(id) === productId);
 
-  console.log(result);
+  // console.log(result);
 
   return (
     <Layout>
-      <ProductDetails id={productId} />
+      <ProductDetails productInfo={result} />
     </Layout>
   );
 };

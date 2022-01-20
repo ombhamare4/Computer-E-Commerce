@@ -16,23 +16,23 @@ const ProductList = (props) => {
   //     setNewProducts(AllProducts);
   //   }
 
-    // if (SortSelectedPriceValue === 1) {
-    //   var newproductslist = AllProducts.filter(function (el) {
-    //     return parseInt(el.price) >= 1000 && parseInt(el.price) <= 10000;
-    //   });
-    // }
-    // else if (SortSelectedPriceValue === 2) {
-    //   var newproducts = AllProducts.filter(function (el) {
-    //     return parseInt(el.price) > 10000 && parseInt(el.price) <= 25000;
-    //   });
-    // } else if (SortSelectedPriceValue === 3) {
-    //   var newproducts = AllProducts.filter(function (el) {
-    //     return parseInt(el.price) > 25000 && parseInt(el.price) <= 50000;
-    //   });
-    // } else if (SortSelectedPriceValue === 4) {
-    //   var newproducts = AllProducts.filter(function (el) {
-    //     return parseInt(el.price) > 50000;
-    //   });
+  // if (SortSelectedPriceValue === 1) {
+  //   var newproductslist = AllProducts.filter(function (el) {
+  //     return parseInt(el.price) >= 1000 && parseInt(el.price) <= 10000;
+  //   });
+  // }
+  // else if (SortSelectedPriceValue === 2) {
+  //   var newproducts = AllProducts.filter(function (el) {
+  //     return parseInt(el.price) > 10000 && parseInt(el.price) <= 25000;
+  //   });
+  // } else if (SortSelectedPriceValue === 3) {
+  //   var newproducts = AllProducts.filter(function (el) {
+  //     return parseInt(el.price) > 25000 && parseInt(el.price) <= 50000;
+  //   });
+  // } else if (SortSelectedPriceValue === 4) {
+  //   var newproducts = AllProducts.filter(function (el) {
+  //     return parseInt(el.price) > 50000;
+  //   });
 
   //   console.log(newproducts);
   // };
