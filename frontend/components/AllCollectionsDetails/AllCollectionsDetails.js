@@ -2,17 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import ReactPaginate from "react-paginate";
-// import React from 'react';
-// import OwlCarousel from "react-owl-carousel";
-//frontend\\node_modules\\react-owl-carousel\\umd\\OwlCarousel.d.ts
-// const  OwlCarousel = dynamic(() => import("../../node_modules/react-owl-carousel/umd/OwlCarousel"), { ssr: false });
-// import "owl.carousel/dist/assets/owl.carousel.css";
-// import "owl.carousel/dist/assets/owl.theme.default.css";
-// import "owl.carousel/dist/assets/owl.carousel.css";
-// import "owl.carousel";
+
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-const OwlCarousel = dynamic(import("react-owl-carousel"), {ssr: false});
+const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
 
 import ProductList from "../ProductsTest/ProductList";
 import styles from "./AllCollection.module.css";
@@ -184,16 +177,80 @@ const products = [
 
   //monitor
 ];
+
+const priceOptions = [
+  {
+    text: "Rs.1000~Rs.10000",
+    value: 1,
+  },
+  {
+    text: "Rs.10000~Rs.25000",
+    value: 2,
+  },
+  {
+    text: "Rs.2500~Rs.50000",
+    value: 3,
+  },
+  {
+    text: "Rs.50000",
+    value: 4,
+  },
+];
+
+const sortingOptions = [
+  {
+    id: 1,
+    text: "Featured",
+    value: "1",
+  },
+  {
+    id: 2,
+    text: "Price, Low to High",
+    value: "2",
+  },
+  {
+    id: 3,
+    text: "Price, High to Low",
+    value: "3",
+  },
+  {
+    id: 4,
+    text: "Alphabetically, A-Z",
+    value: "4",
+  },
+  {
+    id: 5,
+    text: "Alphabetically, Z-A",
+    value: "5",
+  },
+  {
+    id: 6,
+    text: "Date, old to new",
+    value: "6",
+  },
+  {
+    id: 7,
+    text: "Date, new to old",
+    value: "7",
+  },
+  {
+    id: 8,
+    text: "Best Selling",
+    value: "8",
+  },
+];
+
 const AllCollectionsDetails = (props) => {
-  // const carousel = () => {
-  //   new OwlCarousel();
-  // };
-  // useEffect(() => {
-  //   carousel();
-  // }, []);
+  const [priceSort, setPriceSort] = useState(0);
+  const [sortSelected, setSortSelected] = useState(1);
+
+  const [isPriceSelected, setIsPriceSelected] = useState(true);
+  const [isSortSelected, setIsSortSelected] = useState(true);
 
   const [changeView, setChangedView] = useState(false);
   const [items, setItems] = useState([]);
+  const [sortedProducts, setSortedProducts] = useState([]);
+
   const router = useRouter();
   const collectionname = router.query.collectionId;
 
@@ -209,6 +266,105 @@ const AllCollectionsDetails = (props) => {
     console.log("clicked" + event.selected);
   };
 
+  const priceHandler = (e) => {
+    const { name, value } = e.target;
+    setPriceSort(value);
+    setIsPriceSelected(true);
+    setIsSortSelected(false);
+  };
+
+  const sortingHandler = (e) => {
+    const { name, value } = e.target;
+    setSortSelected(value);
+
+    setIsPriceSelected(false);
+    setIsSortSelected(true);
+  };
+
+  function compare(a, b) {
+    if (a.price < b.price) {
+      return -1;
+    }
+    if (a.price > b.price) {
+      return 1;
+    }
+    return 0;
+  }
+
+  //Sorting By Price
+  const SortByPrice = () => {
+    //Price Sort
+    if (isPriceSelected) {
+      switch (parseInt(priceSort)) {
+        case 0:
+          return products;
+
+        case 1:
+          const p = products.filter(function (el) {
+            return parseInt(el.price) >= 1000 && parseInt(el.price) <= 10000;
+          });
+          return p;
+
+        case 2:
+          p = products.filter(function (el) {
+            return parseInt(el.price) > 10000 && parseInt(el.price) <= 25000;
+          });
+          return p;
+
+        case 3:
+          p = products.filter(function (el) {
+            return parseInt(el.price) > 25000 && parseInt(el.price) <= 50000;
+          });
+          return p;
+
+        case 4:
+          p = products.filter(function (el) {
+            return parseInt(el.price) > 50000;
+          });
+          return p;
+
+        default:
+          console.log("Unknow Error Occurs");
+      }
+    }
+
+    // if (isSortSelected) {
+    //   switch (parseInt(sortSelected)) {
+    //     case 0:
+    //       return products;
+
+    //     case 1:
+    //       const p = products
+    //       return p;
+
+    //     case 2:
+    //       p = products.reverse();
+    //       return p;
+
+    //     case 3:
+    //       p = products.filter(function (el) {
+    //         return parseInt(el.price) > 25000 && parseInt(el.price) <= 50000;
+    //       });
+    //       return p;
+
+    //     case 4:
+    //       p = products.filter(function (el) {
+    //         return parseInt(el.price) > 50000;
+    //       });
+    //       return p;
+
+    //     default:
+    //       console.log("Unknow Error Occurs");
+    //   }
+    // }
+
+  };
+
+  useEffect(() => {
+    setSortedProducts(SortByPrice());
+  }, [priceSort, isPriceSelected]); //sortSelected,  isSortSelected
+
+
   return (
     <div className="bg-white shadow-2xl ">
       <div className="bg-gray-300 p-3">
@@ -221,7 +377,24 @@ const AllCollectionsDetails = (props) => {
             <h1 className="p-2 bg-red-500 text-white rounded-md mb-1">
               Shop By Price
             </h1>
+
             <div className="p-2">
+              {priceOptions.map((price) => (
+                <div className="mb-1" key={price.value}>
+                  <label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value={price.value}
+                      onChange={priceHandler}
+                    />{" "}
+                    {price.text}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {/* <div className="p-2">
               <div className="mb-1">
                 <label>
                   <input type="radio" name="radio" /> Rs.1000~Rs.10000
@@ -242,7 +415,7 @@ const AllCollectionsDetails = (props) => {
                   <input type="radio" name="radio" /> Rs.50000+
                 </label>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="shadow-xl rounded-md border border-red-400 p-1 mt-4">
             <h1 className="p-2 bg-red-500 text-white rounded-md mb-1">
@@ -327,34 +500,44 @@ const AllCollectionsDetails = (props) => {
         <div className="col-span-3">
           <div>
             <h1 className="text-xl p-2">Products</h1>
-            <div className="p-2 border border-red-500 rounded-md flex justify-between items-center">
-              <div className="flex">
+            <div className="p-2 border border-red-500 rounded-md flex justify-between items-center xs:block">
+              <div className="flex xs:justify-center xs:pb-2">
                 <button onClick={gridViewHandler}>
-                  <CgMenuGridR className="border border-gray-500 rounded-md text-4xl p-1 mx-2" />
+                  <CgMenuGridR className="border border-gray-500 rounded-md text-4xl p-1 mx-2 xs:text-md" />
                 </button>
                 <button onClick={listViewHandler}>
                   <CgLayoutList className="border border-gray-500 rounded-md text-4xl p-1 mx-2" />
                 </button>
               </div>
-              <div className="flex">
+              <div className="flex  xs:justify-center">
                 <h1 className="mx-2">Sort By:</h1>
-                <select className="mx-2 border border-red-500 rounded-sm w-44 hover:border-red-500">
-                  <option value="0" className="hover:bg-red-400">
-                    Featured
-                  </option>
-                  <option value="1">Price, Low to High</option>
-                  <option value="2">Price, High to Low</option>
-                  <option value="3">Alphabetically, A-Z</option>
-                  <option value="4">Alphabetically, Z-A</option>
-                  <option value="5">Date, old to new</option>
-                  <option value="6">Date, new to old</option>
-                  <option value="7">Best Selling</option>
+                <select
+                  className="border border-red-500 rounded-sm hover:border-red-500"
+                  onChange={sortingHandler}
+                >
+                  {sortingOptions.map((val) => (
+                    <option
+                      value={val.value}
+                      className="hover:bg-red-400"
+                      key={val.id}
+                    >
+                      {val.text}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
           </div>
-          <ProductList products={products} changeView={changeView} />
-          <div className="max-w-8xl mx-auto container py-10 text-right">
+
+          {/* //Product List */}
+          <ProductList
+            products={sortedProducts}
+            changeView={changeView}
+            priceSort={priceSort}
+            sortSelected={sortSelected}
+          />
+
+          {/* <div className="py-10 text-right">
             <ReactPaginate
               className="flex"
               previousLabel={"<"}
@@ -379,7 +562,7 @@ const AllCollectionsDetails = (props) => {
               }
               activeClassName={"bg-red-500 text-white"}
             />
-          </div>
+          </div> */}
           {/* <div>
             <div className="max-w-8xl mx-auto container py-10 text-right">
               <ul className="flex justify-center items-center">

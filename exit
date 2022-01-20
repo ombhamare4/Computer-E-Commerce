@@ -1,0 +1,55 @@
+[33mcommit dcb9b59eb2c8fd8f80d571ff26e0a826eca63bac[m[33m ([m[1;36mHEAD -> [m[1;32mfrontend-2[m[33m)[m
+Merge: 4d56722 40790f4
+Author: omrubiks <om.rubiks@gmail.com>
+Date:   Tue Jan 11 09:34:32 2022 +0530
+
+    Merge branch 'frontend-2' of https://github.com/ombhamare4/Computer-E-Commerce into frontend-2
+
+[33mcommit 4d56722b23d865c743e3cd2d20cd0ed8f25e5da1[m
+Author: omrubiks <om.rubiks@gmail.com>
+Date:   Mon Jan 10 22:02:46 2022 +0530
+
+    Working startd on All collection page
+
+[33mcommit 40790f40f418ae73d98a1367dc9ccff8a5cf32b1[m[33m ([m[1;31morigin/frontend-2[m[33m)[m
+Author: Aman <amanlohani288@gmail.com>
+Date:   Sat Jan 8 09:12:19 2022 +0530
+
+    Addition of hook,sigup and login box
+
+[33mcommit dcd5763c1c571caf410b3b0d3a43aa417c95541d[m
+Merge: c522b7c eb0454a
+Author: Aman <amanlohani288@gmail.com>
+Date:   Fri Jan 7 19:12:17 2022 +0530
+
+    Merge branch 'frontend-2' of https://github.com/ombhamare4/Computer-E-Commerce into frontend-2
+
+[33mcommit c522b7c4671998a632e205bdb7fcb6650b5f18ac[m
+Author: Aman <amanlohani288@gmail.com>
+Date:   Fri Jan 7 19:11:52 2022 +0530
+
+    Added UI components i.e,button, card
+
+[33mcommit eb0454aa9f451fde19779fd9b49b90c4a92794c4[m
+Author: Om Ghanshyam Bhamare <62321632+ombhamare4@users.noreply.github.com>
+Date:   Fri Jan 7 18:32:59 2022 +0530
+
+    Create README.md
+
+[33mcommit 3eabd3a9db440b691533e57e61ca4b1c7b867bb7[m
+Author: omrubiks <om.rubiks@gmail.com>
+Date:   Wed Jan 5 10:47:55 2022 +0530
+
+    Re rendering issue
+
+[33mcommit 15a7bd5d976fca503c4cfb582ae0beefc15f802c[m
+Author: omrubiks <om.rubiks@gmail.com>
+Date:   Wed Jan 5 08:33:56 2022 +0530
+
+    Collections page Isuue Fix
+
+[33mcommit 452994146d51802b562adaa50b61e711a5e08460[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: omrubiks <om.rubiks@gmail.com>
+Date:   Mon Jan 3 10:55:22 2022 +0530
+
+    All Collections

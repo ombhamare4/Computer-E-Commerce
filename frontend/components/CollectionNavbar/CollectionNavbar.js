@@ -63,8 +63,8 @@ const CollectionNavbar = () => {
   const router = useRouter();
 
   return (
-    <div className="border-b-2 border-red-500">
-      <ul className="flex justify-evenly md:block md:bg-red-200 shadow-xl">
+    <div className="border-b-2 border-red-500 transition ease-in-out">
+      <ul className="flex justify-evenly lg:block shadow-xl">
         {Collections.map((collections) => (
           <li
             className={styles.btn1}

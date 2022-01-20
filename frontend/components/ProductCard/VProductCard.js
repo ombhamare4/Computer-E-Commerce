@@ -33,8 +33,11 @@ const VProductCard = (props) => {
         </div>
 
         <div className={styles.btn}>
-          <button className="bg-red-500 p-2 rounded-full mx-2 text-white">
+          <button className="bg-red-500 p-2 rounded-full mx-2 text-white md:hidden ">
             + Add to Cart
+          </button>
+          <button className={styles.addCart}>
+            +
           </button>
           <FaRegHeart className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white" />
           <FaRegEye className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white" />
