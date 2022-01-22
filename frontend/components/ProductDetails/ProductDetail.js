@@ -1,8 +1,16 @@
 import Head from "next/head";
 import { FaRegHeart, FaRegEye, FaRegStar, FaStar } from "react-icons/fa";
+import Countdown from "react-countdown";
+import React, { useEffect, useState } from "react";
+
+import CountDownTimer from "../CountDownTimer/CountDownTimer";
+
 const ProductDetail = (props) => {
-  const { name, image, price, comparedPrice, category, image, subcategory } =
-    props.productInfo;
+
+
+  const { name, image, price, comparedPrice, category } = props.productInfo;
+
+  console.log(props.productInfo);
   return (
     <div>
       <Head>
@@ -21,10 +29,10 @@ const ProductDetail = (props) => {
 
       <section className="text-gray-700 body-font overflow-hidden bg-white">
         <div className="p-16">
-          <div className="flex justify-around">
-            <div className=" border mr-5 p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-full">
+          <div className="grid grid-cols-2 md:grid-cols-1">
+            <div className=" border mr-5 p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-auto">
               <img
-                className="bg-white  w-full transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-150"
+                className="bg-white w-auto transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-150"
                 src={image}
               />
             </div>
@@ -42,6 +50,14 @@ const ProductDetail = (props) => {
                 <FaStar className="rounded-full text-yellow-500" />
                 <FaRegStar className="rounded-full  text-yellow-500" />
               </div>
+              {/* <Countdown
+                date={Date.now() + 10000}
+                intervalDelay={0}
+                precision={3}
+                renderer={(props) => <div>{props.total}</div>}
+              /> */}
+
+              <CountDownTimer/>
 
               <p className="leading-relaxed my-2">
                 - Heavy duty metal frame Premium gaming cabinet (mid tower) with

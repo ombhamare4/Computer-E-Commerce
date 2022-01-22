@@ -451,7 +451,7 @@ const AllCollectionsDetails = (props) => {
               src="https://cdn.shopify.com/s/files/1/0195/8916/9252/files/right-banner_16edbb4f-87b7-4602-a5ca-fea9c0ff5c4b_320x.jpg?v=1556857605"
             />
           </div>
-          <div>
+          {/* <div>
             <h1>carousel</h1>
             <OwlCarousel
               className="owl-theme owl-carousel"
@@ -460,7 +460,7 @@ const AllCollectionsDetails = (props) => {
               margin={5}
               nav
               dots
-             items={1}
+              items={1}
             >
               <div className="item">
                 <h4>1</h4>
@@ -481,7 +481,7 @@ const AllCollectionsDetails = (props) => {
                 <h4>6</h4>
               </div>
             </OwlCarousel>
-          </div>
+          </div> */}
         </div>
 
         <div className="col-span-3">

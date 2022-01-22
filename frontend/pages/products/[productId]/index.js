@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import ProductDetails from "../../../components/ProductDetails/ProductDetail";
 import Layout from "../../../components/Layout/Layout";
 import data from "../../products.json";
+import { useEffect } from "react";
 
 const productslist = [
   //CPU

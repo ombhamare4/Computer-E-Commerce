@@ -8,9 +8,9 @@ const VProductCard = (props) => {
   return (
     <Link href={`products/${props.id}`}>
       <div className="text-center p-2 mb-2 text-md relative hover:shadow-xl  hover:rounded-lg   transition-all duration-500 ease-in-out hover:scale-110">
-        <div className="rounded-lg  mb-2 relative flex items-center justify-center overflow-hidden object-cover h-60">
+        <div className="rounded-lg  mb-2 relative flex items-center justify-center overflow-hidden object-cover h-96">
           <img
-            className="bg-white absolute w-60 transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
+            className="bg-white absolute  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
             src={props.image}
           />
         </div>

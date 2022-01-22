@@ -7,11 +7,11 @@ const HProductCard = (props) => {
   return (
     <Link href={`products/${props.id}`}>
       <div className="grid grid-cols-3 p-2 my-2 border border-t-2  xs:text-sm  md:text-md lg:text-lg hover:shadow-xl hover:rounded-lg transition-all duration-500 ease-in-out hover:scale-105 ">
-        <div className=" p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover">
+        <div className=" p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-full">
           <img
-            className="bg-white  w-60 transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
+            className="bg-white  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
             src={props.image}
-            width="200"
+            // width="200"
           />
         </div>
         <div className=" p-2 mx-2 col-span-2">
