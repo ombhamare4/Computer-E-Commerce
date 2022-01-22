@@ -7,6 +7,7 @@
     padding: 1rem;
   }
   
+  
   .header h1 {
     margin: 0;
     font-size: 3rem;
@@ -62,7 +63,7 @@
   
   .invalid input {
     border: 1px solid #b40e0e;
-    background-color: #fddddd;
+    background-color: #a81818;
   }
   
   .invalid input:focus {
@@ -72,5 +73,6 @@
   
   .errorText {
     color: #b40e0e;
+    text-align: center;
   }
   

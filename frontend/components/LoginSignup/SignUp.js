@@ -63,7 +63,8 @@ const SignUp = () => {
 
     passwordInputResetHandler();
   };
-  
+
+ 
   return (
     <Card className={classes.form}>
       <form onSubmit={formSubmissionHandler}>
@@ -74,7 +75,7 @@ const SignUp = () => {
           <div className={classes.formControl}>
             <label htmlFor="fname">First Name</label>
             <input
-              type="fname"
+              type="text"
               id="fname"
               onChange={firstNameChangeHandler}
               onBlur={firstNameBlurHandler}
@@ -87,7 +88,7 @@ const SignUp = () => {
           <div className={classes.formControl}>
             <label htmlFor="lname">Last Name</label>
             <input
-              type="lname"
+              type="text"
               id="lname"
               onChange={lastNameChangeHandler}
               onBlur={lastNameBlurHandler}
