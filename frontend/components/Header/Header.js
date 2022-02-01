@@ -48,7 +48,7 @@ const Header = () => {
           <div className="flex justify-between text-xl lg:hidden">
             <div className={styles.btn1}>
               <Link href="/account">
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center cursor-pointer">
                   <FaUserAlt />
                   <span className="mx-2">Sign In</span>
                 </div>
@@ -56,7 +56,7 @@ const Header = () => {
             </div>
             <div className={styles.btn1}>
               <Link href="/cart">
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center cursor-pointer">
                   <FaShoppingCart />
                   <span className="mx-2">Cart</span>
                 </div>
