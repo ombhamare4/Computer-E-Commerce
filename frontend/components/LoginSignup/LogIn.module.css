@@ -40,6 +40,7 @@
   font: inherit;
   padding: 0.5rem;
   margin-left: 1.4rem;
+  margin-right: 0.7rem;
   border-radius: 4px;
   border: 1px solid #ccc;
   width: 45vw;
@@ -73,3 +74,12 @@
   color: #b40e0e;
 }
 
+@media(max-width: 600px){
+  .form{
+    width: 95vw;
+  }
+
+  .formControl input{
+    width: 80vw;
+  }
+}
