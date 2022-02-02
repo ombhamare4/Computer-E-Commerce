@@ -31,7 +31,7 @@ module.exports = {
       xl: { max: "1279px" },
       // => @media (max-width: 1279px) { ... }
 
-      lg: { max: "1023px" },
+      lg: { max: "1024px" },
       // => @media (max-width: 1023px) { ... }
 
       md: { max: "768px" },
@@ -39,7 +39,7 @@ module.exports = {
 
       sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
-      xs: { max: "400px" },
+      xs: { max: "500px" },
     },
   },
   plugins: [],

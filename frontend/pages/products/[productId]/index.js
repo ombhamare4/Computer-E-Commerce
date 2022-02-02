@@ -1,11 +1,15 @@
-import Layout from "../../components/Layout/Layout";
-import CartData from "../../components/Cart/CartData";
+import { useRouter } from "next/router";
+
+import ProductDetails from "../../../components/ProductDetails/ProductDetail";
+import Layout from "../../../components/Layout/Layout";
+import data from "../../products.json";
+import { useEffect } from "react";
 
 const productslist = [
   //CPU
   {
     id: 1,
-    name: "LG 68.58 cm (27 inch) 4K-UHD (3840 x 2160) HDR 10 Monitor (Gaming & Design) with IPS Panel, HDMI x 2",
+    name: "Core i9",
     price: "70000",
     comparedPrice: "90000",
     category: "CPU",
@@ -13,7 +17,7 @@ const productslist = [
   },
   {
     id: 2,
-    name: "CHIST PUBG Gaming PC Intel i5 8GB Ram 120GB SSD 500GB Hard Disk GT 730 Graphic Card | WiFi Free Gifted",
+    name: "Core i3",
     price: "7939",
     comparedPrice: "9870",
     category: "CPU",
@@ -21,7 +25,7 @@ const productslist = [
   },
   {
     id: 3,
-    name: "CHIST Budget Gaming PC Intel Core i5- Upto 3.20GHz 8MB Cache | 8GB Ram GT 730 2GB DDR5 Graphic Card 1TB HDD & Gaming RGB",
+    name: "Core i5",
     price: "14,990",
     comparedPrice: "24999",
     category: "CPU",
@@ -167,12 +171,35 @@ const productslist = [
   //monitor
 ];
 
-const Cart = () => {
+const reviews = [
+  {
+    id: 1,
+    name: "Max James",
+  },
+  {
+    id: 2,
+    name: "James Hawkings",
+  },
+  {
+    id: 3,
+    name: "Elon Musk",
+  },
+];
+
+const products = () => {
+  const router = useRouter();
+  const { productId } = router.query;
+  // const {id} =10;
+
+  const result = productslist.find(({ id }) => String(id) === productId);
+
+  // console.log(result);
+
   return (
     <Layout>
-      <CartData productslist={productslist} />
+      <ProductDetails productInfo={result}  reviews={reviews}/>
     </Layout>
   );
 };
 
-export default Cart;
+export default products;
