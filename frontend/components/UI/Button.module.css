@@ -1,18 +1,35 @@
 .button {
   font: inherit;
-  border: 1px solid rgb(56, 23, 23);
+  /* border: 1px solid rgb(56, 23, 23); */
+  border: none;
+  position: relative;
+  transition: .4s ease-in;
   background: wheat;
+  z-index:1;
   color: black;
   padding: 0.75rem 3.5rem;
   cursor: pointer;
   font-size: 1.15rem;
   border-radius: 25px;
+  font-weight: bold;
+
 }
 
-.button:hover,
-.button:active {
+.button::before,
+.button::after{
+  position: absolute;
+  content:"";
+  z-index: -1;
+}
+
+/* .button:active {
   background-color: rgba(255, 39, 23, 0.966);
   border-color: tomato;
+} */
+
+.button:hover{
+  box-shadow: inset -10.5em 0 0 0 #eb8787, inset 10.5em 0 0 0 #eb8787;
+  color: rgb(8, 44, 4);
 }
 
 .button:focus {
