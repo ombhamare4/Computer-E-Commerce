@@ -4,10 +4,12 @@ import Countdown from "react-countdown";
 import React, { useEffect, useState } from "react";
 
 import CountDownTimer from "../CountDownTimer/CountDownTimer";
+import CustomerReviewForm from "../Reviews/CustomerReviewForm";
+import CustomerReview from "../Reviews/CustomerReview";
+
+
 
 const ProductDetail = (props) => {
-
-
   const { name, image, price, comparedPrice, category } = props.productInfo;
 
   console.log(props.productInfo);
@@ -57,7 +59,7 @@ const ProductDetail = (props) => {
                 renderer={(props) => <div>{props.total}</div>}
               /> */}
 
-              <CountDownTimer/>
+              <CountDownTimer />
 
               <p className="leading-relaxed my-2">
                 - Heavy duty metal frame Premium gaming cabinet (mid tower) with
@@ -102,6 +104,9 @@ const ProductDetail = (props) => {
           </div>
         </div>
       </section>
+      <div className="bg-white">
+              <CustomerReview reviews={props.reviews}/>
+      </div>
     </div>
   );
 };

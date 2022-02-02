@@ -171,6 +171,21 @@ const productslist = [
   //monitor
 ];
 
+const reviews = [
+  {
+    id: 1,
+    name: "Max James",
+  },
+  {
+    id: 2,
+    name: "James Hawkings",
+  },
+  {
+    id: 3,
+    name: "Elon Musk",
+  },
+];
+
 const products = () => {
   const router = useRouter();
   const { productId } = router.query;
@@ -182,7 +197,7 @@ const products = () => {
 
   return (
     <Layout>
-      <ProductDetails productInfo={result} />
+      <ProductDetails productInfo={result}  reviews={reviews}/>
     </Layout>
   );
 };

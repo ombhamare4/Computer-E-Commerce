@@ -9,8 +9,9 @@ const CartData = (props) => {
       <div className="p-2">
         <h1 className="text-5xl font-bold">Shopping Cart</h1>
       </div>
-      <div className="grid grid-cols-3 gap-8 mt-4 md:grid-cols-1 ">
-        <section className="col-span-2 ">
+
+      <div className="grid grid-cols-4 gap-8 mt-4 md:grid-cols-1 md:item-center">
+        <section className="col-span-3 md:col-span-1">
           <div>
             <h1 className="mb-5">3 Courses in Cart</h1>
             <div>
