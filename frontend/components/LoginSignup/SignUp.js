@@ -1,6 +1,7 @@
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import useInput from "../../hooks/use-input";
+import Link from "next/link";
 
 import classes from "./SignUp.module.css";
 
@@ -64,16 +65,20 @@ const SignUp = () => {
     passwordInputResetHandler();
   };
 
- 
   return (
     <Card className={classes.form}>
       <form onSubmit={formSubmissionHandler}>
         <div className={classes.header}>
-          <h1>Sign Up</h1>
+          <h1>
+            <span className="text-red-500">J</span>upiter
+            <span className="text-red-500">.</span>
+            <span>com</span>
+          </h1>
         </div>
+        <h3 className={classes.subHeading}>Register</h3>
         <div className={classes.content}>
           <div className={classes.formControl}>
-            <label htmlFor="fname">First Name</label>
+            <label htmlFor="fname">First Name.:</label>
             <input
               type="text"
               id="fname"
@@ -86,7 +91,7 @@ const SignUp = () => {
             )}
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="lname">Last Name</label>
+            <label htmlFor="lname">Last Name.:</label>
             <input
               type="text"
               id="lname"
@@ -99,7 +104,7 @@ const SignUp = () => {
             )}
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email">E-mail.:</label>
             <input
               type="email"
               id="email"
@@ -113,7 +118,7 @@ const SignUp = () => {
             )}
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password.:</label>
             <input
               type="password"
               id="password"
@@ -122,13 +127,23 @@ const SignUp = () => {
               value={enteredPassword}
             />
             {passwordInputHasError && (
-          <p className={classes.errorText}>Enter a password with more then 7 characters.</p>
-        )}
+              <p className={classes.errorText}>
+                Enter a password with more then 7 characters.
+              </p>
+            )}
           </div>
           <div className={classes.buttonAlign}>
             <Button type="submit" disabled={!formIsValid}>
-              Sign Up
+              SignUp
             </Button>
+          </div>
+          <div>
+            <h4 className={classes.headref}>
+              Registered User?
+              <Link href="/account">
+                <span className={classes.blue}>Log in</span>
+              </Link>
+            </h4>
           </div>
         </div>
       </form>

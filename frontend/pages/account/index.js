@@ -1,11 +1,10 @@
 import LogIn from "../../components/LoginSignup/LogIn";
-import SignUp from "../../components/LoginSignup/SignUp";
+import classes from './login.module.css';
 
 const SignIn =()=>{
     return(
-        <div>
+        <div className={classes.position}>
             <LogIn/>
-            <SignUp/>
         </div>
     )
 };

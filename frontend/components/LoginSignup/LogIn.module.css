@@ -1,16 +1,26 @@
 .form {
-  width: 50vw;
+  width: 40vw;
+  background-color: #d9d9d9;
 }
 .header {
-  background-color: #f56565;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: 4.1rem;
   font-weight: bold;
-  color: black;
+}
+
+.subHeading {
+  font-size: 2.7rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
@@ -24,13 +34,12 @@
 .formControl input,
 .formControl label {
   display: flex;
-
 }
 
 .formControl label {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  margin-left: 0.9rem;
+  margin-left: 0.7rem;
   padding: 0.4rem;
   font-size: 1.5rem;
 }
@@ -39,25 +48,37 @@
 .formControl select {
   font: inherit;
   padding: 0.5rem;
-  margin-left: 1.4rem;
+  margin-left: 1.2rem;
   margin-right: 0.7rem;
   border-radius: 4px;
   border: 1px solid #ccc;
-  width: 45vw;
+  width: 34vw;
   max-width: 100%;
 }
 
 .formControl input:focus {
   outline: none;
-  border-color: #240370;
-  background-color: #e0d4fd;
+  border-color: #4484ce;
+  background-color: #f19f4d;
 }
 
-.controlGroup {
-  margin: 3rem 4rem 1rem 5rem;
+.buttonAlign {
   display: flex;
-  column-gap: 12rem;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.headref{
+  font-size:1rem;
+  font-weight: 600;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue{
+  color: blue;
+  cursor: pointer;
 }
 
 .invalid input {
@@ -74,12 +95,71 @@
   color: #b40e0e;
 }
 
-@media(max-width: 600px){
-  .form{
+@media (min-width: 320px) {
+  .form {
     width: 95vw;
   }
-
-  .formControl input{
+  .header h1 {
+    font-size: 2.2rem;
+  }
+  .subHeading {
+    font-size: 1.8rem;
+  }
+  .formControl input {
     width: 80vw;
+  }
+  .formControl label {
+    margin-left: 0.2rem;
+  }
+  .formControl input {
+    margin-left: 0.6rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .form {
+    width: 90vw;
+  }
+  .header h1 {
+    font-size: 2.6rem;
+  }
+  .formControl input {
+    margin-left: 0.7rem;
+  }
+  .formControl label {
+    margin-left: 0.4rem;
+  }
+  .formControl input {
+    width: 80vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .form {
+    width: 68vw;
+  }
+  .header h1 {
+    font-size: 2.8rem;
+  }
+  .subHeading {
+    font-size: 2rem;
+  }
+  .formControl input {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .form {
+    width: 40vw;
+  }
+  .header h1 {
+    font-size: 4.1rem;
+  }
+  .subHeading {
+    font-size: 2.7rem;
+  }
+  .formControl input {
+    width: 35vw;
   }
 }

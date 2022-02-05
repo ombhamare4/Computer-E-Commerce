@@ -9,6 +9,7 @@ import Layout from '../components/Layout/Layout'
 import Account from './account'
 import CarouselTest from '../components/Testing/Carousel';
 import $ from 'jquery';
+import Login from '../components/omcustomlogin/Login'
 
 
 export default function Home() {
@@ -21,7 +22,6 @@ export default function Home() {
       </Head>
         <Layout>
           {/* <h1 className='text-red-500'>Talwind</h1> */}
-          <CarouselTest/>
           {/* <Account/> */}
         </Layout>
 
