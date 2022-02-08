@@ -1,5 +1,5 @@
 .position{
-    position: fixed;
+    position: relative;
     top:1vh;
     left: 30%; 
 }
