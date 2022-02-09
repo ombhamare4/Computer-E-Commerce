@@ -78,7 +78,7 @@ const SignUp = () => {
         <h3 className={classes.subHeading}>Register</h3>
         <div className={classes.content}>
           <div className={classes.formControl}>
-            <label htmlFor="fname">First Name.:</label>
+            <label htmlFor="fname">First Name:</label>
             <input
               type="text"
               id="fname"
@@ -91,7 +91,7 @@ const SignUp = () => {
             )}
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="lname">Last Name.:</label>
+            <label htmlFor="lname">Last Name:</label>
             <input
               type="text"
               id="lname"
@@ -104,7 +104,7 @@ const SignUp = () => {
             )}
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="email">E-mail.:</label>
+            <label htmlFor="email">E-mail:</label>
             <input
               type="email"
               id="email"
@@ -118,7 +118,7 @@ const SignUp = () => {
             )}
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="password">Password.:</label>
+            <label htmlFor="password">Password:</label>
             <input
               type="password"
               id="password"

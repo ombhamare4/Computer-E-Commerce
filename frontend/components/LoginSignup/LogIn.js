@@ -18,11 +18,11 @@ const LogIn = () => {
         <h3 className={classes.subHeading}>Login</h3>
         <div className={classes.content}>
           <div className={classes.formControl}>
-            <label htmlFor="email">E-mail.:</label>
+            <label htmlFor="email">E-mail:</label>
             <input type="email" id="email" placeholder="example@gmail.com" />
           </div>
           <div className={classes.formControl}>
-            <label htmlFor="password">Password.:</label>
+            <label htmlFor="password">Password:</label>
             <input type="password" id="password" />
           </div>
           <div className={classes.buttonAlign}>
