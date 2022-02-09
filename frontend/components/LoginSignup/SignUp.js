@@ -4,8 +4,14 @@ import useInput from "../../hooks/use-input";
 import Link from "next/link";
 
 import classes from "./SignUp.module.css";
+import { useRef } from "react";
 
 const SignUp = () => {
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
   const {
     value: enteredFirstName,
     isValid: enteredFirstNameIsValid,
@@ -85,6 +91,7 @@ const SignUp = () => {
               onChange={firstNameChangeHandler}
               onBlur={firstNameBlurHandler}
               value={enteredFirstName}
+              ref={firstNameRef}
             />
             {firstInputHasError && (
               <p className={classes.errorText}>First name can not be blank.</p>
@@ -98,6 +105,7 @@ const SignUp = () => {
               onChange={lastNameChangeHandler}
               onBlur={lastNameBlurHandler}
               value={enteredLastName}
+              ref={lastNameRef}
             />
             {lastInputHasError && (
               <p className={classes.errorText}>Last name can not be blank.</p>
@@ -112,6 +120,7 @@ const SignUp = () => {
               onChange={emailChangeHandler}
               onBlur={emailBlurHandler}
               value={enteredEmail}
+              ref={emailRef}
             />
             {emailInputHasError && (
               <p className={classes.errorText}>Enter a valid email.</p>
@@ -125,6 +134,7 @@ const SignUp = () => {
               onChange={passwordChangeHandler}
               onBlur={passwordBlurHandler}
               value={enteredPassword}
+              ref={passwordRef}
             />
             {passwordInputHasError && (
               <p className={classes.errorText}>
