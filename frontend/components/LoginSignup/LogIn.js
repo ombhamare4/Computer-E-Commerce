@@ -3,8 +3,11 @@ import Button from "../UI/Button";
 
 import classes from "./LogIn.module.css";
 import Link from "next/link";
+import { useRef } from "react";
 
 const LogIn = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
   return (
     <Card className={classes.form}>
       <form>
@@ -19,11 +22,11 @@ const LogIn = () => {
         <div className={classes.content}>
           <div className={classes.formControl}>
             <label htmlFor="email">E-mail:</label>
-            <input type="email" id="email" placeholder="example@gmail.com" />
+            <input type="email" id="email" placeholder="example@gmail.com"  ref={emailRef}/>
           </div>
           <div className={classes.formControl}>
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" />
+            <input type="password" id="password" ref={passwordRef}/>
           </div>
           <div className={classes.buttonAlign}>
             <Button type="submit">Log In</Button>
