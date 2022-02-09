@@ -23,6 +23,7 @@ export default function Home() {
         <Layout>
           {/* <h1 className='text-red-500'>Talwind</h1> */}
           {/* <Account/> */}
+          <CarouselTest/>
         </Layout>
 
     </div>
