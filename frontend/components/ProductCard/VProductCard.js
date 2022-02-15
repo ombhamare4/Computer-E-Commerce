@@ -19,9 +19,9 @@ const VProductCard = (props) => {
           {props.name}
         </h1>
 
-        <p className="my-1">Rs.{props.price}</p>
+        <p className="my-1">Rs.{props.discountPrice}</p>
         <p>
-          Rs.<span className="my-1 line-through ">{props.comparedPrice}</span>
+          Rs.<span className="my-1 line-through ">{props.originalPrice}</span>
         </p>
 
         <div className="flex justify-center  items-center">

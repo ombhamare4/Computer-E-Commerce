@@ -1,15 +1,19 @@
 import Head from "next/head";
-import Image from "next/image";
-
-//CSS Imports Here
-import styles from "../styles/Home.module.css";
-//Componensts Import Here
 import Layout from "../components/Layout/Layout";
-import Account from "./account";
 import CarouselTest from "../components/Testing/Carousel";
-import $ from "jquery";
-import Login from "../components/omcustomlogin/Login";
-import Slider from "../components/Carsouel/Slider";
+
+// import {
+//   ApolloClient,
+//   InMemoryCache,
+//   ApolloProvider,
+//   useQuery,
+//   gql,
+// } from "@apollo/client";
+
+// const client = new ApolloClient({
+//   uri: "http://localhost:5000/graphql",
+//   cache: new InMemoryCache(),
+// });
 
 export default function Home() {
   return (
@@ -20,10 +24,7 @@ export default function Home() {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
       <Layout>
-        {/* <h1 className='text-red-500'>Talwind</h1> */}
-        {/* <Account/> */}
         <CarouselTest />
-        {/* <Slider /> */}
       </Layout>
     </div>
   );

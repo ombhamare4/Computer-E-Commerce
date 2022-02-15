@@ -4,6 +4,9 @@ import ProductDetails from "../../../components/ProductDetails/ProductDetail";
 import Layout from "../../../components/Layout/Layout";
 import data from "../../products.json";
 import { useEffect } from "react";
+import { gql, useQuery } from "@apollo/client";
+import client from "../../../api/appolo-client";
+import Loading from "../../../components/Loading/Loading";
 
 const productslist = [
   //CPU
@@ -186,20 +189,83 @@ const reviews = [
   },
 ];
 
-const products = () => {
+const products = ({ productId, productData, loading }) => {
   const router = useRouter();
-  const { productId } = router.query;
-  // const {id} =10;
-
-  const result = productslist.find(({ id }) => String(id) === productId);
-
-  // console.log(result);
-
+  if (loading) return <Loading />;
   return (
     <Layout>
-      <ProductDetails productInfo={result}  reviews={reviews}/>
+      <ProductDetails productData={productData} reviews={reviews} />
     </Layout>
   );
 };
 
 export default products;
+
+export async function getStaticPaths() {
+  const { data } = await client.query({
+    query: gql`
+      query products {
+        products {
+          _id
+          name
+        }
+      }
+    `,
+  });
+
+  return {
+    paths: data.products.map((product) => ({
+      params: {
+        productId: product._id,
+      },
+    })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context) {
+  const productId = context.params.productId;
+  const { data, loading } = await client.query({
+    query: gql`
+      query Product($productId: String!) {
+        productByID(productId: $productId) {
+          _id
+          name
+          image
+          price {
+            originalPrice
+            discountPrice
+          }
+          company
+          category
+          description
+          weight
+          available
+          reviews {
+            rating
+            comment
+          }
+          createdAt
+          updatedAt
+        }
+      }
+    `,
+    variables: { productId },
+  });
+
+  return {
+    props: {
+      productId: productId,
+      productData: data.productByID,
+      loading: loading,
+    },
+  };
+}
+
+// export const getServerSideProps = async ({ params }) => {
+//   return {
+//     props: {
+//       productId: params.productId,
+//     },
+//   };
+// };

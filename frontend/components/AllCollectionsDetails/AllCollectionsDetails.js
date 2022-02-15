@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import ReactPaginate from "react-paginate";
+import { gql, useQuery } from "@apollo/client";
+
+import client from "../../api/appolo-client";
 
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -240,7 +243,13 @@ const sortingOptions = [
   },
 ];
 
+
+
 const AllCollectionsDetails = (props) => {
+  // const { loading, error, data } = client.query(GetProducts);
+  // console.log(products);
+  // console.log(props.productsData);
+
   const [priceSort, setPriceSort] = useState(0);
   const [sortSelected, setSortSelected] = useState(1);
 
@@ -518,11 +527,13 @@ const AllCollectionsDetails = (props) => {
 
           {/* //Product List */}
           <ProductList
-            products={sortedProducts}
+            products={props.productsData}
             changeView={changeView}
-            priceSort={priceSort}
-            sortSelected={sortSelected}
+
           />
+
+{/* priceSort={priceSort}
+            sortSelected={sortSelected} */}
 
           {/* <div className="py-10 text-right">
             <ReactPaginate
