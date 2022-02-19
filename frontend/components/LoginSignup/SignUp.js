@@ -4,13 +4,13 @@ import useInput from "../../hooks/use-input";
 import Link from "next/link";
 
 import classes from "./SignUp.module.css";
-import { useRef } from "react";
+
 
 const SignUp = () => {
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  // const firstNameRef = useRef();
+  // const lastNameRef = useRef();
+  // const emailRef = useRef();
+  // const passwordRef = useRef();
 
   const {
     value: enteredFirstName,
@@ -19,6 +19,7 @@ const SignUp = () => {
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
     reset: firstNameInputResetHandler,
+    valueRef: firstNameRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -28,6 +29,7 @@ const SignUp = () => {
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: lastNameInputResetHandler,
+    valueRef: lastNameRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -37,6 +39,7 @@ const SignUp = () => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     reset: emailInputResetHandler,
+    valueRef: emailRef,
   } = useInput((value) => value.includes("@"));
 
   const {
@@ -46,6 +49,7 @@ const SignUp = () => {
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
     reset: passwordInputResetHandler,
+    valueRef: passwordRef,
   } = useInput((value) => value.length > 7);
 
   let formIsValid = false;
@@ -56,7 +60,7 @@ const SignUp = () => {
     enteredEmailIsValid &&
     enteredPasswordIsValid
   ) {
-    formIsValid = true;
+    formIsValid = true  ;
   }
 
   const formSubmissionHandler = (event) => {
