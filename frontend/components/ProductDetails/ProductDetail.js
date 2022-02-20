@@ -26,6 +26,13 @@ const ProductDetail = (props) => {
   var originalPrice =
     otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
 
+  const  text = props.productData.description;
+
+  // const formatedText = text.replace(/\\n?/g, "\n");
+  // const formatedText = text.split("\\n").join("<br />");
+  const formatedText = text.replace(/\r?\n|\r/g, " ")
+  // const formatedText = text.split("\\n").join("<br />");
+
   return (
     <div>
       <Head>
@@ -80,8 +87,8 @@ const ProductDetail = (props) => {
 
               {/* <CountDownTimer /> */}
 
-              <p className="leading-relaxed my-2">
-                {props.productData.description}
+              <p className="leading-relaxed my-2 whitespace-pre-line">
+                {formatedText}
               </p>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
