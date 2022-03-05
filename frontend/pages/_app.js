@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { AuthProvider } from "../api/authentication";
 import {
   ApolloClient,
   InMemoryCache,
@@ -15,7 +16,9 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </ApolloProvider>
   );
 }

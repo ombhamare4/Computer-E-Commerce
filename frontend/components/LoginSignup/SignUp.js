@@ -2,15 +2,58 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import useInput from "../../hooks/use-input";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
+import Loading from "../Loading/Loading";
 import classes from "./SignUp.module.css";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gql, useMutation } from "@apollo/client";
+
+const CREATE_USER = gql`
+  mutation CreateUser(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+  ) {
+    createUser(
+      userInput: {
+        name: { firstName: $firstName, lastName: $lastName }
+        email: $email
+        password: $password
+      }
+    ) {
+      email
+      password
+    }
+  }
+`;
 
 const SignUp = () => {
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const router = useRouter();
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const [createUser, { data, loading, error }] = useMutation(CREATE_USER, {
+    onCompleted: (data) => {
+      if (data) {
+        setIsSignUp(true);
+      }
+    },
+    onError: (error) => {
+      if (error) {
+        setIsError(true);
+      }
+    },
+  });
+  if (isSignUp) {
+    router.push(`/account`);
+  }
+  // if (loading) return <Loading/>;
+
+  const firstNameRef = useRef(null);
+  const lastNameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
   const {
     value: enteredFirstName,
@@ -46,7 +89,7 @@ const SignUp = () => {
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
     reset: passwordInputResetHandler,
-  } = useInput((value) => value.length > 7);
+  } = useInput((value) => value.length >= 8);
 
   let formIsValid = false;
 
@@ -69,6 +112,14 @@ const SignUp = () => {
     emailInputResetHandler();
 
     passwordInputResetHandler();
+    createUser({
+      variables: {
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      },
+    });
   };
 
   return (
@@ -82,6 +133,11 @@ const SignUp = () => {
           </h1>
         </div>
         <h3 className={classes.subHeading}>Register</h3>
+        {isError && (
+          <p className="text-center my-5 text-lg text-red-500">
+            User Already Exists
+          </p>
+        )}
         <div className={classes.content}>
           <div className={classes.formControl}>
             <label htmlFor="fname">First Name:</label>
@@ -138,7 +194,7 @@ const SignUp = () => {
             />
             {passwordInputHasError && (
               <p className={classes.errorText}>
-                Enter a password with more then 7 characters.
+                Enter a password with more then or equal to 8 characters.
               </p>
             )}
           </div>

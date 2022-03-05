@@ -6,7 +6,10 @@ import AllCollectionsDetails from "../../components/AllCollectionsDetails/AllCol
 import client from "../../api/appolo-client";
 import { gql, useQuery } from "@apollo/client";
 
-const AllCollectionPage = ({ productsData }) => {
+const AllCollectionPage = ({ productsData , loading }) => {
+  if(loading){
+    console.log("Loading Here"+loading);
+  }
   const router = useRouter();
   const collectionName = router.query.collectionId;
   // console.log(productsData);
@@ -39,7 +42,7 @@ export default AllCollectionPage;
 // `;
 
 export async function getStaticProps() {
-  const { data } = await client.query({
+  const { data , loading } = await client.query({
     query: gql`
       query products {
         products {
@@ -63,10 +66,10 @@ export async function getStaticProps() {
       }
     `,
   });
-
   return {
     props: {
       productsData: data.products,
+      loading: loading
     },
   };
 }

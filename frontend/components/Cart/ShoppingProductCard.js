@@ -1,6 +1,13 @@
 import { FaTag, FaStar, FaRegStar } from "react-icons/fa";
 import Link from "next/link";
 const ShoppingProductCard = (props) => {
+  var x = props.price;
+  x = x.toString();
+  var lastThree = x.substring(x.length - 3);
+  var otherNumbers = x.substring(0, x.length - 3);
+  if (otherNumbers != "") lastThree = "," + lastThree;
+  var discountPrice =
+    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
   return (
     <div className="my-2 p-2  relative hover:shadow-xl  transition-all duration-500 ease-in-out hover:scale-100">
       <div className="grid grid-cols-4 gap-2 lg:grid-cols-2">
@@ -10,7 +17,7 @@ const ShoppingProductCard = (props) => {
         <div className="col-span-2 lg:col-span-1">
           <h1 className="text-lg font-semibold mb-2">{props.name}</h1>
           <div className="flex  items-center mb-2">
-            <p className="text-lg mr-2 ">Rs. 28,469</p>
+            <p className="text-lg mr-2 ">Rs.{discountPrice}</p>
             <FaTag />
           </div>
           <div className="flex  lg:block ">

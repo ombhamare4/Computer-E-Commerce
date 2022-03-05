@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/Layout/Layout";
 import CarouselTest from "../components/Testing/Carousel";
+import { useState } from "react";
 
 // import {
 //   ApolloClient,
@@ -16,6 +17,19 @@ import CarouselTest from "../components/Testing/Carousel";
 // });
 
 export default function Home() {
+  // const [token, setToken] = useState(null);
+  // const [userId, setUserId] = useState(null);
+
+  // AuthContext.login = (token, userId, tokenExpiration) => {
+  //   setTimeout(() => setToken(token), 0);
+  //   setTimeout(() => setUserId(userId), 0);
+  // };
+
+  // AuthContext.logout = () => {
+  //   setToken(null);
+  //   setUserId(null);
+  // };
+
   return (
     <div>
       <Head>
