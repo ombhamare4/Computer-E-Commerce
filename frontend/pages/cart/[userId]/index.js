@@ -2,7 +2,7 @@ import Layout from "../../../components/Layout/Layout";
 import CartData from "../../../components/Cart/CartData";
 import { useAuth } from "../../../api/authentication";
 import { gql, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import client from "../../../api/appolo-client";
 const productslist = [
   //CPU
@@ -192,11 +192,14 @@ const USER = gql`
 
 const Cart = ({userData,userId}) => {
   const { userID } = useAuth();
-  // console.log("Render Function ID: "+userId);
-  // console.log("Render Function "+userData);
+  const [userStateData, setUserData] = useState(userData);
+  useEffect(()=>{
+    setUserData(userData)
+  });
+  console.log(userData);
   return (
     <Layout>
-      <CartData productslist={productslist} cartData = {userData} />
+      <CartData productslist={productslist} cartData = {userStateData} />
     </Layout>
   );
 };
@@ -226,7 +229,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const userId = context.params.userId;
-  console.log(userId);
   const { data, loading } = await client.query({
     query: gql`
       query User($userId: String!) {
@@ -237,9 +239,11 @@ export async function getStaticProps(context) {
           email
           cart {
             product {
+              _id
               name
               price {
                 discountPrice
+                originalPrice
               }
               image
             }

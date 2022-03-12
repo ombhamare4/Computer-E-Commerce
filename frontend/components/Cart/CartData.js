@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import ShoppingProductCard from "./ShoppingProductCard";
 import Checkout from "./Checkout";
 import { useEffect, useState } from "react";
@@ -7,20 +5,36 @@ import { useAuth } from "../../api/authentication";
 import NoAuth from "../Error/NoAuth";
 const CartData = (props) => {
   const [isCartEmpty, setIsCartEmpty] = useState(false);
-  // const [isAuth, setIsAuth] = useState(false);
-  const { isSignedIn } = useAuth();
+  const [cartData, setCartData] = useState(props.cartData.cart);
+  const [productId, setProductId] = useState(null);
+  const { isSignedIn, userID } = useAuth();
+
+  // const [removeFromCart] = useMutation(REMOVE_FROM_CART);
 
   useEffect(() => {
-    if (props.cartData.cart.length === 0) {
+    if (cartData.length === 0) {
       setIsCartEmpty(true);
     }
-  }, []);
+    // console.log("Here is product id to remove: " + productId);
+    setCartData(props.cartData.cart)
+
+  console.log(cartData.length);
+    // removeProduct();
+  }, [props.cartData.cart]);
+
+
+
+  let sumDiscount = 0;
+  let sumOriginal = 0;
+  props.cartData.cart.map((product) => {
+    sumDiscount = sumDiscount + parseInt(product.product.price.discountPrice);
+    sumOriginal = sumOriginal + parseInt(product.product.price.originalPrice);
+  });
+  const TotalDiscount = 100 - (sumDiscount * 100) / sumOriginal;
 
   return (
     <div className="bg-white p-5">
-      {!isSignedIn() &&
-      <NoAuth/>
-      }
+      {!isSignedIn() && <NoAuth />}
       {isSignedIn() && (
         <div>
           <div className="p-2">
@@ -35,12 +49,14 @@ const CartData = (props) => {
                   <h1 className="mb-5">3 Courses in Cart</h1>
                   <div>
                     <ul>
-                      {props.cartData.cart.map((product) => (
-                        <li key={product.id}>
+                      {cartData.map((product) => (
+                        <li key={product.product._id}>
                           <ShoppingProductCard
+                            id={product.product._id}
                             name={product.product.name}
                             price={product.product.price.discountPrice}
                             image={product.product.image}
+                            setProductId={setProductId}
                           />
                         </li>
                       ))}
@@ -49,7 +65,11 @@ const CartData = (props) => {
                 </div>
               </section>
               <section>
-                <Checkout />
+                <Checkout
+                  sumDiscount={sumDiscount}
+                  sumOriginal={sumOriginal}
+                  TotalDiscount={TotalDiscount}
+                />
               </section>
             </div>
           )}
@@ -60,3 +80,4 @@ const CartData = (props) => {
 };
 
 export default CartData;
+

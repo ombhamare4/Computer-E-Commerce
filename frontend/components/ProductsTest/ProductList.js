@@ -10,6 +10,7 @@ const ProductList = (props) => {
   const SortSelectedPriceValue = parseInt(props.priceSort);
   var SortSelectedValue = props.sortSelected;
 
+// console.log(AllProducts);
 
   // const SortByPrice = () => {
   //   setNewProducts(AllProducts);
