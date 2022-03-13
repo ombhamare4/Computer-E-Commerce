@@ -99,7 +99,7 @@ const SignUp = () => {
     enteredEmailIsValid &&
     enteredPasswordIsValid
   ) {
-    formIsValid = true;
+    formIsValid = true  ;
   }
 
   const formSubmissionHandler = (event) => {
