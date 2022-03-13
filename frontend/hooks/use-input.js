@@ -8,10 +8,10 @@ const useInput = (validateValue) => {
   const valueRef = useRef(null);
   const valueIsValid = validateValue(enteredValue);
   const hasError = !valueIsValid && isTouched;
-
-  if (valueIsValid && !hasError){
-    ref={valueRef};
-  }
+  
+  // if (valueIsValid && !hasError){
+  //   ref={valueRef};
+  // }
   const valueChangeHandler = (event) => {
     setEnteredValue(event.target.value);
   };
