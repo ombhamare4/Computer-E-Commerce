@@ -1,9 +1,16 @@
+import CatalogMenu from "../../components/CatalogMenu/CatalogMenu";
 import Layout from "../../components/Layout/Layout";
+import classes from './catlog.module.css';
+
+
 
 const Catlog =()=>{
     return(
         <Layout>
-            Catlog
+            <div className={classes.layout}>
+                <h2>Catalog</h2>
+            </div>
+           <CatalogMenu/>
         </Layout>
     )
 };
