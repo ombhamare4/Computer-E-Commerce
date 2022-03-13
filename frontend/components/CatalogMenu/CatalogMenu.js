@@ -150,7 +150,7 @@ const CatalogMenu = () => {
             key={item.id}
           >
             <img src={item.image} />
-            <h3>{item.title}</h3>
+            <h3 className="text-red-500">{item.title}</h3>
           </li>
         );
       })}
