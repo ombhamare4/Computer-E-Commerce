@@ -127,8 +127,8 @@ const CatalogItem = [
   },
   {
     id: "c23",
-    title: "Desk",
-    image: "https://m.media-amazon.com/images/I/91PrtuB+AKL._SL1500_.jpg",
+    title: "Games",
+    image: "https://m.media-amazon.com/images/I/81Ow0EK3azL._SL1500_.jpg",
   },
   {
     id: "c24",
@@ -149,7 +149,12 @@ const CatalogMenu = () => {
             }}
             key={item.id}
           >
-            <img src={item.image} />
+            <div className=" p-3 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-full">
+              <img
+                src={item.image}
+                className="bg-white  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-100"
+              />
+            </div>
             <h3 className="text-red-500">{item.title}</h3>
           </li>
         );
