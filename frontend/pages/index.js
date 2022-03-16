@@ -8,8 +8,11 @@ import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout/Layout'
 import Account from './account'
 import CarouselTest from '../components/Testing/Carousel';
+import Slider from '../components/Carsouel/Slider';
 import $ from 'jquery';
 import Login from '../components/omcustomlogin/Login'
+import {images} from '../components/Carsouel/SliderImages';
+import CatalogMenu from '../components/CatalogMenu/CatalogMenu'
 
 
 export default function Home() {
@@ -21,8 +24,7 @@ export default function Home() {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
         <Layout>
-          {/* <h1 className='text-red-500'>Talwind</h1> */}
-          {/* <Account/> */}
+         
         </Layout>
 
     </div>
