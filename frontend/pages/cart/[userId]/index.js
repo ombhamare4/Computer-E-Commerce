@@ -1,7 +1,7 @@
 import Layout from "../../../components/Layout/Layout";
 import CartData from "../../../components/Cart/CartData";
 import { useAuth } from "../../../api/authentication";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useLazyQuery, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import client from "../../../api/appolo-client";
 const productslist = [
@@ -170,98 +170,116 @@ const productslist = [
   //monitor
 ];
 
-const USER = gql`
-  query User($userId: String!) {
+const USER_BY_ID = gql`
+  query userById($userId: String!) {
     userById(userId: $userId) {
-      name {
-        firstName
-      }
+      _id
       email
+
       cart {
         product {
+          _id
           name
+          image
           price {
             discountPrice
+            originalPrice
           }
-          image
         }
       }
     }
   }
 `;
 
-const Cart = ({userData,userId}) => {
-  const { userID } = useAuth();
-  const [userStateData, setUserData] = useState(userData);
-  useEffect(()=>{
-    setUserData(userData)
+const Cart = () => {
+  const { isSignedIn, userID } = useAuth();
+  const [userData, setUserData] = useState([]);
+
+  const [search, { data }] = useLazyQuery(USER_BY_ID, {
+    variables: { userId: userID },
+    onCompleted: (data) => {
+      console.log("On Completed data: " + data);
+      setUserData(data);
+    },
+    onError: (error) => {
+      console.log("Error: " + error);
+    },
   });
-  console.log(userData);
+
+  useEffect(() => {
+    if (userID) {
+      search();
+    }
+    if(data){
+      setUserData(data);
+    }
+  }, [userID]);
+
   return (
     <Layout>
-      <CartData productslist={productslist} cartData = {userStateData} />
+      <CartData productslist={productslist} cartData={userData} />
     </Layout>
   );
 };
 
 export default Cart;
 
-export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: gql`
-      query user {
-        users {
-          _id
-        }
-      }
-    `,
-  });
+// export async function getStaticPaths() {
+//   const { data } = await client.query({
+//     query: gql`
+//       query user {
+//         users {
+//           _id
+//         }
+//       }
+//     `,
+//   });
 
-  return {
-    paths: data.users.map((user) => ({
-      params: {
-        userId: user._id,
-      },
-    })),
-    fallback: false,
-  };
-}
+//   return {
+//     paths: data.users.map((user) => ({
+//       params: {
+//         userId: user._id,
+//       },
+//     })),
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps(context) {
-  const userId = context.params.userId;
-  const { data, loading } = await client.query({
-    query: gql`
-      query User($userId: String!) {
-        userById(userId: $userId) {
-          name {
-            firstName
-          }
-          email
-          cart {
-            product {
-              _id
-              name
-              price {
-                discountPrice
-                originalPrice
-              }
-              image
-            }
-          }
-        }
-      }
-    `,
-    variables: { userId },
-  });
+// export async function getStaticProps(context) {
+//   const userId = context.params.userId;
+//   const { data, loading } = await client.query({
+//     query: gql`
+//       query User($userId: String!) {
+//         userById(userId: $userId) {
+//           name {
+//             firstName
+//           }
+//           email
+//           cart {
+//             product {
+//               _id
+//               name
+//               price {
+//                 discountPrice
+//                 originalPrice
+//               }
+//               image
+//             }
+//           }
+//         }
+//       }
+//     `,
+//     variables: { userId },
+//   });
 
-  return {
-    props: {
-      userId: userId,
-      userData: data.userById,
-      loading: loading,
-    },
-  };
-}
+//   return {
+//     props: {
+//       userId: userId,
+//       userData: data.userById,
+//       loading: loading,
+//     },
+//   };
+// }
 
 // export const getServerSideProps = async ({ params }) => {
 //   return {

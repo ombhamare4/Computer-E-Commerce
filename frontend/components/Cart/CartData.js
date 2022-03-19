@@ -5,9 +5,11 @@ import { useAuth } from "../../api/authentication";
 import NoAuth from "../Error/NoAuth";
 const CartData = (props) => {
   const [isCartEmpty, setIsCartEmpty] = useState(false);
-  const [cartData, setCartData] = useState(props.cartData.cart);
+  const [cartData, setCartData] = useState(props.cartData.userById.cart);
   const [productId, setProductId] = useState(null);
   const { isSignedIn, userID } = useAuth();
+//  console.log(cartData);
+  // console.log(props.cartData);
 
   // const [removeFromCart] = useMutation(REMOVE_FROM_CART);
 
@@ -16,21 +18,21 @@ const CartData = (props) => {
       setIsCartEmpty(true);
     }
     // console.log("Here is product id to remove: " + productId);
-    setCartData(props.cartData.cart)
-
-  console.log(cartData.length);
+    setCartData(cartData)
     // removeProduct();
-  }, [props.cartData.cart]);
+  }, [cartData]);
 
 
 
   let sumDiscount = 0;
   let sumOriginal = 0;
-  props.cartData.cart.map((product) => {
+  cartData.map((product) => {
     sumDiscount = sumDiscount + parseInt(product.product.price.discountPrice);
     sumOriginal = sumOriginal + parseInt(product.product.price.originalPrice);
   });
-  const TotalDiscount = 100 - (sumDiscount * 100) / sumOriginal;
+  const TotalDiscount =100 - (sumDiscount * 100) / sumOriginal;
+
+
 
   return (
     <div className="bg-white p-5">

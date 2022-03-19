@@ -2,9 +2,7 @@ import { useRouter } from "next/router";
 
 import ProductDetails from "../../../components/ProductDetails/ProductDetail";
 import Layout from "../../../components/Layout/Layout";
-import data from "../../products.json";
-import { useEffect } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import client from "../../../api/appolo-client";
 import Loading from "../../../components/Loading/Loading";
 
