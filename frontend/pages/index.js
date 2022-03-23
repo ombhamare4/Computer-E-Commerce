@@ -1,15 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-
-//CSS Imports Here
-import styles from "../styles/Home.module.css";
 //Componensts Import Here
 import Layout from "../components/Layout/Layout";
-import Account from "./account";
 import CarouselTest from "../components/Testing/Carousel";
-import $ from "jquery";
-import Login from "../components/omcustomlogin/Login";
-import Slider from "../components/Carsouel/Slider";
 
 export default function Home() {
   return (
