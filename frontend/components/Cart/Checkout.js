@@ -26,7 +26,6 @@ const Checkout = (props) => {
       <div className="cursor-pointer bg-red-500 p-3 text-xl text-center  relative hover:shadow-xl  transition-all duration-500 ease-in-out hover:scale-110">
         <h1 className="text-white" >Checkout</h1>
       </div>
-      </Link>
     </div>
   );
 };
