@@ -170,116 +170,102 @@ const productslist = [
   //monitor
 ];
 
-const USER_BY_ID = gql`
-  query userById($userId: String!) {
-    userById(userId: $userId) {
-      _id
-      email
+// const USER_BY_ID = gql`
+//   query userById($userId: String!) {
+//     userById(userId: $userId) {
+//       _id
+//       email
 
-      cart {
-        product {
-          _id
-          name
-          image
-          price {
-            discountPrice
-            originalPrice
-          }
-        }
-      }
-    }
-  }
-`;
+//       cart {
+//         product {
+//           _id
+//           name
+//           image
+//           price {
+//             discountPrice
+//             originalPrice
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
-const Cart = () => {
-  const { isSignedIn, userID } = useAuth();
-  const [userData, setUserData] = useState([]);
+// let dummy_data = [];
 
-  const [search, { data }] = useLazyQuery(USER_BY_ID, {
-    variables: { userId: userID },
-    onCompleted: (data) => {
-      console.log("On Completed data: " + data);
-      setUserData(data);
-    },
-    onError: (error) => {
-      console.log("Error: " + error);
-    },
-  });
+const Cart = ({userData}) => {
+  console.log(userData.cart);
 
-  useEffect(() => {
-    if (userID) {
-      search();
-    }
-    if(data){
-      setUserData(data);
-    }
-  }, [userID]);
+  // useEffect(()=>{
+  //   Cart();
+  // },[userData])
 
   return (
     <Layout>
-      <CartData productslist={productslist} cartData={userData} />
+      <p>Wait</p>
+      <CartData productslist={productslist} cartData={userData.cart} />
     </Layout>
   );
 };
 
 export default Cart;
 
-// export async function getStaticPaths() {
-//   const { data } = await client.query({
-//     query: gql`
-//       query user {
-//         users {
-//           _id
-//         }
-//       }
-//     `,
-//   });
+export async function getStaticPaths() {
+  const { data } = await client.query({
+    query: gql`
+      query user {
+        users {
+          _id
+        }
+      }
+    `,
+  });
 
-//   return {
-//     paths: data.users.map((user) => ({
-//       params: {
-//         userId: user._id,
-//       },
-//     })),
-//     fallback: false,
-//   };
-// }
+  return {
+    paths: data.users.map((user) => ({
+      params: {
+        userId: user._id,
+      },
+    })),
+    fallback: false,
+  };
+}
 
-// export async function getStaticProps(context) {
-//   const userId = context.params.userId;
-//   const { data, loading } = await client.query({
-//     query: gql`
-//       query User($userId: String!) {
-//         userById(userId: $userId) {
-//           name {
-//             firstName
-//           }
-//           email
-//           cart {
-//             product {
-//               _id
-//               name
-//               price {
-//                 discountPrice
-//                 originalPrice
-//               }
-//               image
-//             }
-//           }
-//         }
-//       }
-//     `,
-//     variables: { userId },
-//   });
+export async function getStaticProps(context) {
+  const userId = context.params.userId;
+  const { data, loading } = await client.query({
+    query: gql`
+      query User($userId: String!) {
+        userById(userId: $userId) {
+          name {
+            firstName
+          }
+          email
+          cart {
+            product {
+              _id
+              name
+              price {
+                discountPrice
+                originalPrice
+              }
+              image
+            }
+          }
+        }
+      }
+    `,
+    variables: { userId },
+  });
 
-//   return {
-//     props: {
-//       userId: userId,
-//       userData: data.userById,
-//       loading: loading,
-//     },
-//   };
-// }
+  return {
+    props: {
+      userId: userId,
+      userData: data.userById,
+      loading: loading,
+    },
+  };
+}
 
 // export const getServerSideProps = async ({ params }) => {
 //   return {
