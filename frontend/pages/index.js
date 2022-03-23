@@ -1,7 +1,8 @@
 import Head from "next/head";
 //Componensts Import Here
 import Layout from "../components/Layout/Layout";
-import CarouselTest from "../components/Testing/Carousel";
+
+import HomeCarousel from "../components/Carsouel/HomeCarousel";
 
 export default function Home() {
   return (
@@ -12,10 +13,7 @@ export default function Home() {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
       <Layout>
-        {/* <h1 className='text-red-500'>Talwind</h1> */}
-        {/* <Account/> */}
-        <CarouselTest />
-        {/* <Slider /> */}
+        <HomeCarousel />
       </Layout>
     </div>
   );
