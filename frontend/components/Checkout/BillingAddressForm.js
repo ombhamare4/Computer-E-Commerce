@@ -1,9 +1,14 @@
+import { useRef } from "react";
 import useInput from "../../hooks/use-input";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import classes from "./BillingAddressForm.module.css";
 
 const BillingAddressForm = (props) => {
+
+  const streetRef = useRef();
+  const landmarkRef = useRef();
+
   const {
     value: enteredFirstName,
     isValid: enteredFirstNameIsValid,
@@ -11,6 +16,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: firstNameChangeHandler,
     inputBlurHandler: firstNameBlurHandler,
     reset: firstNameInputResetHandler,
+    valueRef: firstNameRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -20,6 +26,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: lastNameChangeHandler,
     inputBlurHandler: lastNameBlurHandler,
     reset: lastNameInputResetHandler,
+    valueRef: lastNameRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -29,6 +36,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: phoneNoChangeHandler,
     inputBlurHandler: phoneNoBlurHandler,
     reset: phoneNoInputResetHandler,
+    valueRef: phoneNoRef,
   } = useInput((value) => value.length === 10);
 
   const {
@@ -38,6 +46,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: address1ChangeHandler,
     inputBlurHandler: address1BlurHandler,
     reset: address1InputResetHandler,
+    valueRef: address1Ref,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -47,6 +56,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: cityChangeHandler,
     inputBlurHandler: cityBlurHandler,
     reset: cityInputResetHandler,
+    valueRef: cityRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -56,6 +66,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: stateChangeHandler,
     inputBlurHandler: stateBlurHandler,
     reset: stateInputResetHandler,
+    valueRef: stateRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -65,6 +76,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: countryChangeHandler,
     inputBlurHandler: countryBlurHandler,
     reset: countryInputResetHandler,
+    valueRef: countryRef,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -74,6 +86,7 @@ const BillingAddressForm = (props) => {
     valueChangeHandler: pinCodeChangeHandler,
     inputBlurHandler: pinCodeBlurHandler,
     reset: pinCodeInputResetHandler,
+    valueRef: pincodeRef,
   } = useInput((value) => value.length === 6);
 
   let formIsValid = false;
@@ -113,9 +126,15 @@ const BillingAddressForm = (props) => {
   return (
     <Card className={classes.form}>
       <form onSubmit={formSubmissionHandler}>
-        <div className={classes.header}>
-          <h1 className={classes.h1}>Checkout</h1>
+      <div className={classes.header}>
+          <h1>
+            <span className="text-red-500">J</span>upiter
+            <span className="text-red-500">.</span>
+            <span>com</span>
+          </h1>
         </div>
+        <h3 className={classes.subHeading}>Billing Address</h3>
+        <div className={classes.content}>
         <div className={classes.controlGroup}>
           <div className={classes.formControl}>
             <label htmlFor="fname">First Name</label>
@@ -125,6 +144,7 @@ const BillingAddressForm = (props) => {
               onChange={firstNameChangeHandler}
               onBlur={firstNameBlurHandler}
               value={enteredFirstName}
+              ref={firstNameRef}
             />
             {firstInputHasError && (
               <p className={classes.errorText}>First name can not be blank.</p>
@@ -138,26 +158,12 @@ const BillingAddressForm = (props) => {
               onChange={lastNameChangeHandler}
               onBlur={lastNameBlurHandler}
               value={enteredLastName}
+              ref={lastNameRef}
             />
             {lastInputHasError && (
               <p className={classes.errorText}>Last name can not be blank.</p>
             )}
           </div>
-        </div>
-        <div className={classes.controlSingle}>
-          <label htmlFor="phoneno">Phone no:.</label>
-          <input
-            type="phoneno"
-            id="number"
-            onChange={phoneNoChangeHandler}
-            onBlur={phoneNoBlurHandler}
-            value={enteredPhoneNo}
-          />
-          {phoneNoInputHasError && (
-            <p className={classes.errorText}>
-              Please enter valid phone number.
-            </p>
-          )}
         </div>
         <div className={classes.controlSingle}>
           <label htmlFor="address1">
@@ -169,6 +175,7 @@ const BillingAddressForm = (props) => {
             onChange={address1ChangeHandler}
             onBlur={address1BlurHandler}
             value={enteredAddress1}
+            ref={address1Ref}
           />
           {address1HasError && (
             <p className={classes.errorText}>Address is required.</p>
@@ -177,11 +184,11 @@ const BillingAddressForm = (props) => {
         <div className={classes.controlGroup}>
           <div className={classes.formControl}>
             <label htmlFor="street">Street name(optional)</label>
-            <input type="text" id="street" />
+            <input type="text" id="street" ref={streetRef}/>
           </div>
           <div className={classes.formControl}>
             <label htmlFor="landmark">Landmark(optional)</label>
-            <input type="text" id="landmark" />
+            <input type="text" id="landmark" ref={landmarkRef}/>
           </div>
         </div>
         <div className={classes.controlGroup}>
@@ -193,6 +200,7 @@ const BillingAddressForm = (props) => {
               onChange={cityChangeHandler}
               onBlur={cityBlurHandler}
               value={enteredCity}
+              ref={cityRef}
             />
             {cityHasError && (
               <p className={classes.errorText}>Enter a city/town name.</p>
@@ -206,6 +214,7 @@ const BillingAddressForm = (props) => {
               onChange={stateChangeHandler}
               onBlur={stateBlurHandler}
               value={enteredState}
+              ref={stateRef}
             />
             {stateInputHasError && (
               <p className={classes.errorText}>Enter a state.</p>
@@ -214,36 +223,41 @@ const BillingAddressForm = (props) => {
         </div>
         <div className={classes.controlGroup}>
           <div className={classes.formControl}>
-            <label htmlFor="country">Country:.</label>
+            <label htmlFor="country">Phone No</label>
             <input
-              type="text"
-              id="country"
-              onChange={countryChangeHandler}
-              onBlur={countryBlurHandler}
-              value={enteredCountry}
-            />
-            {countryHasError && (
-              <p className={classes.errorText}>Please enter your country.</p>
-            )}
+               inputMode="numeric"
+               id="phoneno"
+               onChange={phoneNoChangeHandler}
+               onBlur={phoneNoBlurHandler}
+               value={enteredPhoneNo}
+               ref={phoneNoRef}
+             />
+             {phoneNoInputHasError && (
+               <p className={classes.errorText}>
+                 Please enter valid phone number.
+               </p>
+             )}
           </div>
           <div className={classes.formControl}>
             <label htmlFor="pincode">Pin Code:.</label>
             <input
-              type="number"
+              inputMode="numeric"
               id="pincode"
               onChange={pinCodeChangeHandler}
               onBlur={pinCodeBlurHandler}
               value={enteredPinCode}
+              ref={pincodeRef}
             />
             {pincodeInputHasError && (
               <p className={classes.errorText}>Enter location Pin code.</p>
             )}
           </div>
         </div>
-        <div>
-          <Button type="submit" disabled={!formIsValid}>
+        <div className={classes.buttonAlign}>
+          <Button type="submit" disabled={!formIsValid} >
             Procced
           </Button>
+        </div>
         </div>
       </form>
     </Card>

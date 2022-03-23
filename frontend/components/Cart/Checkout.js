@@ -24,8 +24,9 @@ const Checkout = (props) => {
       <h1 className="text-md mb-2 text-gray-500">Rs. {originalPrice}</h1>
       <h1 className="text-md mb-2 text-gray-500">{props.TotalDiscount.toFixed(2)}% off</h1>
       <div className="cursor-pointer bg-red-500 p-3 text-xl text-center  relative hover:shadow-xl  transition-all duration-500 ease-in-out hover:scale-110">
-        <h1 className="text-white">Checkout</h1>
+        <h1 className="text-white" >Checkout</h1>
       </div>
+      </Link>
     </div>
   );
 };

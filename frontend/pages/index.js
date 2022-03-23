@@ -1,20 +1,8 @@
 import Head from "next/head";
+//Componensts Import Here
 import Layout from "../components/Layout/Layout";
-import CarouselTest from "../components/Testing/Carousel";
-import { useState } from "react";
 
-// import {
-//   ApolloClient,
-//   InMemoryCache,
-//   ApolloProvider,
-//   useQuery,
-//   gql,
-// } from "@apollo/client";
-
-// const client = new ApolloClient({
-//   uri: "http://localhost:5000/graphql",
-//   cache: new InMemoryCache(),
-// });
+import HomeCarousel from "../components/Carsouel/HomeCarousel";
 
 export default function Home() {
   // const [token, setToken] = useState(null);
@@ -38,7 +26,7 @@ export default function Home() {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
       <Layout>
-        <CarouselTest />
+        <HomeCarousel />
       </Layout>
     </div>
   );
