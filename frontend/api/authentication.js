@@ -48,7 +48,7 @@ function useProvideAuth() {
 
   const createApolloClient = () => {
     const link = new HttpLink({
-      uri: "http://localhost:5000/graphql",
+      uri: "https://jupiter-admin-pannel.herokuapp.com/graphql",
       headers: getAuthHeaders(),
     });
 
