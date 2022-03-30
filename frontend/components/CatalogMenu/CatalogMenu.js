@@ -139,21 +139,22 @@ const CatalogItem = [
 
 const CatalogMenu = () => {
   return (
-    <div className={classes.layout}>
+    <ul className={classes.layout}>
       {CatalogItem.map((item) => {
         return (
-          <div
+          <li
             className={classes.element}
             onClick={() => {
               console.log(item.title);
             }}
+            key={item.id}
           >
             <img src={item.image} />
             <h3>{item.title}</h3>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
