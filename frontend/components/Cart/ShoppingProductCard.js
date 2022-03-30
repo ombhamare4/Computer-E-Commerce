@@ -2,6 +2,7 @@ import { FaTag, FaStar, FaRegStar } from "react-icons/fa";
 import Link from "next/link";
 import { useMutation, gql } from "@apollo/client";
 import { useAuth } from "../../api/authentication";
+import {USER_BY_ID} from "../../graphql/query"
 
 const REMOVE_FROM_CART = gql`
   mutation RemoveFromCart($productId: String!, $userId: String!) {
@@ -15,7 +16,9 @@ const REMOVE_FROM_CART = gql`
 
 const ShoppingProductCard = (props) => {
   const {userID} = useAuth();
-  const [removeFromCart] = useMutation(REMOVE_FROM_CART);
+  const [removeFromCart] = useMutation(REMOVE_FROM_CART,{
+    refetchQueries:[USER_BY_ID,'userById']
+  });
 
   var x = props.price;
   x = x.toString();

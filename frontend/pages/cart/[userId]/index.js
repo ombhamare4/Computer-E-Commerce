@@ -4,6 +4,7 @@ import { useAuth } from "../../../api/authentication";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import client from "../../../api/appolo-client";
+import {USER_BY_ID} from "../../../graphql/query"
 const productslist = [
   //CPU
   {
@@ -234,27 +235,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const userId = context.params.userId;
   const { data, loading } = await client.query({
-    query: gql`
-      query User($userId: String!) {
-        userById(userId: $userId) {
-          name {
-            firstName
-          }
-          email
-          cart {
-            product {
-              _id
-              name
-              price {
-                discountPrice
-                originalPrice
-              }
-              image
-            }
-          }
-        }
-      }
-    `,
+    query:USER_BY_ID,
     variables: { userId },
   });
 
