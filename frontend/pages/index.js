@@ -13,6 +13,9 @@ import $ from 'jquery';
 import Login from '../components/omcustomlogin/Login'
 import {images} from '../components/Carsouel/SliderImages';
 import CatalogMenu from '../components/CatalogMenu/CatalogMenu'
+import MultiItemCarousel from '../components/ProductSlider/ProductSlider'
+import { multiData } from '../components/ProductSlider/data'
+import Slider2 from '../components/ProductSlider/Slider2'
 
 
 export default function Home() {
@@ -24,7 +27,7 @@ export default function Home() {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
         <Layout>
-         
+        <Slider2/>
         </Layout>
 
     </div>
