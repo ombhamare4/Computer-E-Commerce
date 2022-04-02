@@ -1,13 +1,9 @@
 import "../styles/globals.css";
 import { AuthProvider } from "../api/authentication";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
-
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { url } from "../api/url";
 const client = new ApolloClient({
-  uri: "https://jupiter-admin-pannel.herokuapp.com/graphql",
+  uri: url,
   cache: new InMemoryCache(),
 });
 

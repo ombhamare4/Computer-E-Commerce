@@ -193,7 +193,7 @@ const productslist = [
 
 // let dummy_data = [];
 
-const Cart = ({userData}) => {
+const Cart = ({ userData }) => {
   console.log(userData.cart);
 
   // useEffect(()=>{
