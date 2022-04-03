@@ -17,7 +17,9 @@ const CartData = (props) => {
   });
   const TotalDiscount =100 - (sumDiscount * 100) / sumOriginal;
 
-
+    // if(props.cartData.length===0){
+    //   setIsCartEmpty(true);
+    // }
 
   return (
     <div className="bg-white p-5">
@@ -25,7 +27,7 @@ const CartData = (props) => {
       {isSignedIn() && (
         <div>
           <div className="p-2">
-            <h1 className="text-5xl font-bold">Shopping Cart</h1>
+            <h1 className="text-5xl font-bold ">Shopping Cart</h1>
           </div>
           {isCartEmpty && <p>Want add product?</p>}
 
@@ -33,7 +35,7 @@ const CartData = (props) => {
             <div className="grid grid-cols-4 gap-8 mt-4 md:grid-cols-1 md:item-center">
               <section className="col-span-3 md:col-span-1">
                 <div>
-                  <h1 className="mb-5">3 Courses in Cart</h1>
+                  {/* <h1 className="mb-5">3 Courses in Cart</h1> */}
                   <div>
                     <ul>
                       { props.cartData.map((product) => (
