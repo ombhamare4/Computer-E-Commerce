@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <div className="bg-white">
       <div className={styles.headers}>
-        <div className="flex justify-evenly text-center p-2 md:block">
+        <div className="flex justify-center text-center p-2 md:block">
           <div className="flex justify-center items-center">
             <h1 className="text-4xl font-bold">
               <span className="text-red-500">J</span>upiter
@@ -39,7 +39,7 @@ const Header = () => {
               <span>com</span>
             </h1>
           </div>
-          <div className="flex justify-center items-center lg:hidden">
+          <div className="flex justify-center items-center lm:hidden">
             <div className="flex">
               <div className={styles.btn1}>
                 <Link href="/">Home</Link>
@@ -55,7 +55,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between text-xl lg:hidden">
+          <div className="flex justify-between text-xl lm:hidden">
             {!isSignedIn() && (
               <div className={styles.btn1}>
                 <Link href="/account">
