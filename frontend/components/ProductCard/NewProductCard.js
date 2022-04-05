@@ -5,7 +5,7 @@ import { MdAdd } from "react-icons/md";
 const NewProductCard = (props) => {
   return (
     <div className="p-3 mx-2 transition-all duration-300 hover:scale-110 z-20 cursor-pointer">
-      <div className="rounded-lg  relative flex items-center justify-center overflow-hidden object-cover h-48">
+      <div className="rounded-lg  relative flex items-center justify-center overflow-hidden object-cover h-48 md:h-64">
         <img
           src={props.image}
           className="bg-white absolute  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"

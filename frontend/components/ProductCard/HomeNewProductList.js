@@ -13,6 +13,31 @@ const HomeNewProductList = () => {
   if (error) return <p>Error Boss</p>;
   console.log(data);
   console.log(error);
+
+  const options = {
+    loop: true,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    animateOut: "fadeOut",
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      700: {
+        items: 3,
+      },
+      1000: {
+        items: 5,
+      },
+    },
+  };
   return (
     <div className="bg-white p-2 rounded-lg border-2 border-red-500">
       <div className="flex">
@@ -20,15 +45,7 @@ const HomeNewProductList = () => {
           New Products
         </h1>
       </div>
-      <OwlCarousel
-        className="owl-theme owl-loaded"
-        loop
-        dots={false}
-        items={5}
-        autoplay={true}
-        autoplayTimeout={5000}
-        animateOut="fadeOut"
-      >
+      <OwlCarousel className="owl-theme owl-loaded" {...options}>
         {data.products.slice(0, 10).map((product) => (
           <div key={product._id} className="item">
             <NewProductCard
