@@ -7,7 +7,7 @@ import NewProductCard from "./NewProductCard";
 import { GET_PRODUCTS } from "../../graphql/query";
 import { useQuery } from "@apollo/client";
 
-const HomeNewProductList = () => {
+const DealOfTheDay = () => {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
   if (loading) return <p>loading</p>;
   if (error) return <p>Error Boss</p>;
@@ -28,31 +28,31 @@ const HomeNewProductList = () => {
         items: 2,
       },
       600: {
-        items: 2,
+        items: 1,
       },
       700: {
-        items: 3,
+        items: 1,
       },
       1000: {
-        items: 5,
+        items: 1,
       },
     },
   };
-  const heightnew = "h-56  lm:h-96 xs:h-40"
-  const imageheight = "xs:h-40"
+  const heightday = "h-56  lm:h-96 xs:h-40";
+  const imageheight = "xs:h-40";
   return (
     <div className="bg-white p-2 rounded-lg border-2 border-red-500">
       <div className="flex">
         <h1 className="text-xl text-white font-bold bg-red-500 p-2 rounded-r-full">
-          New Products
+          Deal of the Day
         </h1>
       </div>
       <OwlCarousel className="owl-theme owl-loaded" {...options}>
-        {data.products.slice(0, 10).map((product) => (
+        {data.products.slice(12, 15).map((product) => (
           <div key={product._id} className="item">
             <NewProductCard
-            height= {heightnew}
-            imgheight={imageheight}
+              height={heightday}
+              imgheight={imageheight}
               name={product.name}
               image={product.image}
               price={product.price.discountPrice}
@@ -63,4 +63,4 @@ const HomeNewProductList = () => {
     </div>
   );
 };
-export default HomeNewProductList;
+export default DealOfTheDay;
