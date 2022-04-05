@@ -23,11 +23,11 @@ const NewHeader = () => {
         </div>
         <div>
           <ul className="flex">
-            <li className="mx-2 p-2 trasnsition-all duration-500 hover:bg-red-500 hover:text-white rounded-xl hover:rounded-xl">
+            <li className= "p-2 trasnsition-all duration-500 hover:bg-red-500 hover:text-white ">
               24/7 Help
             </li>
             <li
-              className={`${styles.dropdown} trasnsition-all duration-500 hover:bg-red-500 hover:text-white rounded-t-xl hover:rounded-t-xl`}
+              className={`${styles.dropdown} trasnsition-all duration-500 hover:bg-red-500 hover:text-white`}
             >
               <h1 className={styles.dropbtn}>Your Account</h1>
               <ul
@@ -41,7 +41,7 @@ const NewHeader = () => {
                 </li>
               </ul>
             </li>
-            <li className="mx-2  p-2 trasnsition-all duration-500 hover:bg-red-500 hover:text-white rounded-xl hover:rounded-xl">
+            <li className="p-2 trasnsition-all duration-500 hover:bg-red-500 hover:text-white">
               Cart
             </li>
           </ul>
@@ -49,7 +49,6 @@ const NewHeader = () => {
       </div>
 
       {/* Navbar here */}
-
     </div>
   );
 };
