@@ -1,7 +1,5 @@
 import { currencyConverter } from "../../hooks/currencyConverter";
-import { FaRegHeart, FaRegEye, FaRegStar, FaStar } from "react-icons/fa";
-
-import { GrFormAdd, GrAdd } from "react-icons/gr";
+import { FaRegHeart, FaRegEye } from "react-icons/fa";
 
 import { MdAdd } from "react-icons/md";
 const NewProductCard = (props) => {
