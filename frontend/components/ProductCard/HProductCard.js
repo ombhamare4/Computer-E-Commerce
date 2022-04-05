@@ -24,7 +24,7 @@ const HProductCard = (props) => {
             <FaRegStar className="rounded-full  text-yellow-500" />
           </div>
           <h1 className="text-gray-800 truncate  mb-2">
-            Rs. {props.price}
+            Rs. {props.discountPrice}
           </h1>
           <div className="xs:hidden">
             <div className="flex">

@@ -64,9 +64,17 @@ const HomeCarousel = () => {
           />
         </div>
       </OwlCarousel>
+<<<<<<< HEAD
       
+=======
+      ;
+>>>>>>> b204937728ce8373bc7e94b0a1b73007a642d791
     </div>
   );
 };
 
+<<<<<<< HEAD
 export default HomeCarousel;
+=======
+export default HomeCarousel;
+>>>>>>> b204937728ce8373bc7e94b0a1b73007a642d791

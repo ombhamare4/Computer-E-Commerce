@@ -7,25 +7,37 @@ import CountDownTimer from "../CountDownTimer/CountDownTimer";
 import CustomerReviewForm from "../Reviews/CustomerReviewForm";
 import CustomerReview from "../Reviews/CustomerReview";
 
-
+import ReactImageMagnify from "react-image-magnify";
 
 const ProductDetail = (props) => {
-  const { name, image, price, comparedPrice, category } = props.productInfo;
+  var x = props.productData.price.discountPrice;
+  x = x.toString();
+  var lastThree = x.substring(x.length - 3);
+  var otherNumbers = x.substring(0, x.length - 3);
+  if (otherNumbers != "") lastThree = "," + lastThree;
+  var discountPrice =
+    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
 
-  console.log(props.productInfo);
+  var x = props.productData.price.originalPrice;
+  x = x.toString();
+  var lastThree = x.substring(x.length - 3);
+  var otherNumbers = x.substring(0, x.length - 3);
+  if (otherNumbers != "") lastThree = "," + lastThree;
+  var originalPrice =
+    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+
+  const  text = props.productData.description;
+
+  // const formatedText = text.replace(/\\n?/g, "\n");
+  // const formatedText = text.split("\\n").join("<br />");
+  const formatedText = text.replace(/\r?\n|\r/g, " ")
+  // const formatedText = text.split("\\n").join("<br />");
+
   return (
     <div>
       <Head>
-        <title>{name}</title>
-        <meta
-          name="description"
-          content=" Fam locavore kickstarter distillery. Mixtape chillwave tumeric
-                sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo
-                juiceramps cornhole raw denim forage brooklyn. Everyday carry +1
-                seitan poutine tumeric. Gastropub blue bottle austin listicle
-                pour-over, neutra jean shorts keytar banjo tattooed umami
-                cardigan."
-        />
+        <title>{props.productData.name}</title>
+        <meta name="description" content={props.productData.description} />
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
 
@@ -33,17 +45,31 @@ const ProductDetail = (props) => {
         <div className="p-16">
           <div className="grid grid-cols-2 md:grid-cols-1">
             <div className=" border mr-5 p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-auto">
+              {/* <ReactImageMagnify
+                {...{
+                  smallImage: {
+                    alt: "Wristwatch by Ted Baker London",
+                    isFluidWidth: true,
+                    src: `${props.productData.image}`,
+                  },
+                  largeImage: {
+                    src: `${props.productData.image}`,
+                    width: 1200,
+                    height: 1800,
+                  },
+                }}
+              /> */}
               <img
                 className="bg-white w-auto transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-150"
-                src={image}
+                src={props.productData.image}
               />
             </div>
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                DELL
+                {props.productData.company}
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {name}
+                {props.productData.name}
               </h1>
               <div className="flex items-center mb-2">
                 <FaStar className="rounded-full text-yellow-500" />
@@ -59,30 +85,17 @@ const ProductDetail = (props) => {
                 renderer={(props) => <div>{props.total}</div>}
               /> */}
 
-              <CountDownTimer />
+              {/* <CountDownTimer /> */}
 
-              <p className="leading-relaxed my-2">
-                - Heavy duty metal frame Premium gaming cabinet (mid tower) with
-                optimized design for better air flow and ventilation -
-                Motherboard RGB sync support with the RGB / Fan controller and
-                remote control, given inside the package - Fully functional
-                remote control with 100+ LED modes, static colors, LED speed
-                control, motherboard sync option brightness adjustment and much
-                more - 4x 120mm Center glow RGB fans on front, top and rear
-                panels. Additional fans can be added on the front and top panels
-                - Supports installation of mATX and ATX form factor
-                motherboards. Accommodates 3x SSD (max.) and 1x HDD (max.) -
-                165mm space for CPU cooler and 300mm space for VGA graphics
-                installation - Well defined front panel connectors with USB 3.0
-                and Audio ports - RGB / Fan controller with support for max. 10
-                connections - Additional AIO cooler installation is supported on
-                Front, top and rear panels - RGB backlit side panel with
-                Boomerang design and Tempered glass panels on either sides, for
-                a picture perfect gaming rig
+              <p className="leading-relaxed my-2 whitespace-pre-line">
+                {formatedText}
               </p>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  Rs. {price}
+                  Rs. {discountPrice}
+                  <span className="text-sm  line-through mx-2">
+                    Rs.{originalPrice}
+                  </span>
                 </span>
                 <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
                   Buy
@@ -105,111 +118,10 @@ const ProductDetail = (props) => {
         </div>
       </section>
       <div className="bg-white">
-              <CustomerReview reviews={props.reviews}/>
+        <CustomerReview reviews={props.reviews} />
       </div>
     </div>
   );
 };
 
 export default ProductDetail;
-
-{
-  /* <div className="flex mb-4">
-                <span className="flex items-center">
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    className="w-4 h-4 text-red-500"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                  <span className="text-gray-600 ml-3">4 Reviews</span>
-                </span>
-                <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
-                  <a className="text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                    </svg>
-                  </a>
-                  <a className="ml-2 text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                    </svg>
-                  </a>
-                  <a className="ml-2 text-gray-500">
-                    <svg
-                      fill="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      className="w-5 h-5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                    </svg>
-                  </a>
-                </span>
-              </div> */
-}

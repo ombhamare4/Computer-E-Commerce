@@ -17,7 +17,6 @@
 .element img {
   height: 240px;
   width: 240px;
-  /* border: solid black 2px; */
 }
 
 .element h3 {
@@ -26,36 +25,44 @@
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
-  color: coral;
+  color: rgb(239 68 68);
 }
 
 .element:hover {
   transform: scale(1.05);
-  box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.26);
+  /* box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.26); */
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition-duration: 150ms; */
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 @media (min-width: 320px) {
-  .layout{
+  .layout {
     grid-template-columns: 1fr;
   }
 }
-@media (min-width: 576px){
-  .layout{
+@media (min-width: 576px) {
+  .layout {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 768px){
-  .layout{
+@media (min-width: 768px) {
+  .layout {
     grid-template-columns: 1fr 1fr;
   }
 }
-@media (min-width: 992px){
-  .layout{
+@media (min-width: 992px) {
+  .layout {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-@media (min-width: 1200px){
-  .layout{
+@media (min-width: 1200px) {
+  .layout {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

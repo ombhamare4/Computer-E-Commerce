@@ -1,6 +1,37 @@
 import { FaTag, FaStar, FaRegStar } from "react-icons/fa";
 import Link from "next/link";
+import { useMutation, gql } from "@apollo/client";
+import { useAuth } from "../../api/authentication";
+
+const REMOVE_FROM_CART = gql`
+  mutation RemoveFromCart($productId: String!, $userId: String!) {
+    removeFromCart(productID: $productId, userID: $userId) {
+      product {
+        name
+      }
+    }
+  }
+`;
+
 const ShoppingProductCard = (props) => {
+  const {userID} = useAuth();
+  const [removeFromCart] = useMutation(REMOVE_FROM_CART);
+
+  var x = props.price;
+  x = x.toString();
+  var lastThree = x.substring(x.length - 3);
+  var otherNumbers = x.substring(0, x.length - 3);
+  if (otherNumbers != "") lastThree = "," + lastThree;
+  var discountPrice =
+    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+
+  const removeProductHandler = (event) => {
+    const productId = event.target.value;
+    removeFromCart({ variables: { productId: productId, userId: userID } });
+  };
+
+
+
   return (
     <div className="my-2 p-2  relative hover:shadow-xl  transition-all duration-500 ease-in-out hover:scale-100">
       <div className="grid grid-cols-4 gap-2 lg:grid-cols-2">
@@ -10,7 +41,7 @@ const ShoppingProductCard = (props) => {
         <div className="col-span-2 lg:col-span-1">
           <h1 className="text-lg font-semibold mb-2">{props.name}</h1>
           <div className="flex  items-center mb-2">
-            <p className="text-lg mr-2 ">Rs. 28,469</p>
+            <p className="text-lg mr-2 ">Rs.{discountPrice}</p>
             <FaTag />
           </div>
           <div className="flex  lg:block ">
@@ -34,10 +65,12 @@ const ShoppingProductCard = (props) => {
         </div>
         <div className="text-right lg:flex ">
           <h1 className="text-blue-700 lg:mx-2">
-            <Link href="/cart">Remove</Link>
+            <button value={props.id} onClick={removeProductHandler}>
+              Remove
+            </button>
           </h1>
           <h1 className="text-blue-700">
-            <Link href="/cart">Add to favourite</Link>
+            <button>Add to favourite</button>
           </h1>
         </div>
       </div>

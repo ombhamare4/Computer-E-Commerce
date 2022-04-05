@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import ReactPaginate from "react-paginate";
@@ -8,7 +8,6 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
 
 import ProductList from "../ProductsTest/ProductList";
-import styles from "./AllCollection.module.css";
 
 import { CgMenuGridR, CgLayoutList } from "react-icons/cg";
 
@@ -241,6 +240,10 @@ const sortingOptions = [
 ];
 
 const AllCollectionsDetails = (props) => {
+  // const { loading, error, data } = client.query(GetProducts);
+  // console.log(products);
+  // console.log(props.productsData);
+
   const [priceSort, setPriceSort] = useState(0);
   const [sortSelected, setSortSelected] = useState(1);
 
@@ -260,10 +263,6 @@ const AllCollectionsDetails = (props) => {
 
   const listViewHandler = () => {
     setChangedView(false);
-  };
-
-  const handlePageClick = (event) => {
-    console.log("clicked" + event.selected);
   };
 
   const priceHandler = (e) => {
@@ -327,41 +326,31 @@ const AllCollectionsDetails = (props) => {
           console.log("Unknow Error Occurs");
       }
     }
-
-    // if (isSortSelected) {
-    //   switch (parseInt(sortSelected)) {
-    //     case 0:
-    //       return products;
-
-    //     case 1:
-    //       const p = products
-    //       return p;
-
-    //     case 2:
-    //       p = products.reverse();
-    //       return p;
-
-    //     case 3:
-    //       p = products.filter(function (el) {
-    //         return parseInt(el.price) > 25000 && parseInt(el.price) <= 50000;
-    //       });
-    //       return p;
-
-    //     case 4:
-    //       p = products.filter(function (el) {
-    //         return parseInt(el.price) > 50000;
-    //       });
-    //       return p;
-
-    //     default:
-    //       console.log("Unknow Error Occurs");
-    //   }
-    // }
   };
 
+  const [currentItems, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 9;
   useEffect(() => {
     setSortedProducts(SortByPrice());
-  }, [priceSort, isPriceSelected]); //sortSelected,  isSortSelected
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(props.productsData.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(props.productsData.length / itemsPerPage));
+  }, [priceSort, isPriceSelected, itemOffset, itemsPerPage]); //sortSelected,  isSortSelected
+
+  const handlePageClick = (event) => {
+    console.log("clicked" + event.selected);
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+    console.log("This is : " + currentItems);
+  };
 
   return (
     <div className="bg-white shadow-2xl ">
@@ -391,29 +380,6 @@ const AllCollectionsDetails = (props) => {
                 </div>
               ))}
             </div>
-
-            {/* <div className="p-2">
-              <div className="mb-1">
-                <label>
-                  <input type="radio" name="radio" /> Rs.1000~Rs.10000
-                </label>
-              </div>
-              <div className="mb-1">
-                <label>
-                  <input type="radio" name="radio" /> Rs.10000~Rs.25000
-                </label>
-              </div>
-              <div className="mb-1">
-                <label>
-                  <input type="radio" name="radio" /> Rs.2500~Rs.50000
-                </label>
-              </div>
-              <div className="mb-1">
-                <label>
-                  <input type="radio" name="radio" /> Rs.50000+
-                </label>
-              </div>
-            </div> */}
           </div>
           <div className="shadow-xl rounded-md border border-red-400 p-1 mt-4">
             <h1 className="p-2 bg-red-500 text-white rounded-md mb-1">
@@ -451,39 +417,7 @@ const AllCollectionsDetails = (props) => {
               src="https://cdn.shopify.com/s/files/1/0195/8916/9252/files/right-banner_16edbb4f-87b7-4602-a5ca-fea9c0ff5c4b_320x.jpg?v=1556857605"
             />
           </div>
-          {/* <div>
-            <h1>carousel</h1>
-            <OwlCarousel
-              className="owl-theme owl-carousel"
-              loop
-              autoplay="true"
-              margin={5}
-              nav
-              dots
-              items={1}
-            >
-              <div className="item">
-                <h4>1</h4>
-              </div>
-              <div class="item">
-                <h4>2</h4>
-              </div>
-              <div class="item">
-                <h4>3</h4>
-              </div>
-              <div class="item">
-                <h4>4</h4>
-              </div>
-              <div class="item">
-                <h4>5</h4>
-              </div>
-              <div class="item">
-                <h4>6</h4>
-              </div>
-            </OwlCarousel>
-          </div> */}
         </div>
-
         <div className="col-span-3">
           <div>
             <h1 className="text-xl p-2">Products</h1>
@@ -516,15 +450,9 @@ const AllCollectionsDetails = (props) => {
             </div>
           </div>
 
-          {/* //Product List */}
-          <ProductList
-            products={sortedProducts}
-            changeView={changeView}
-            priceSort={priceSort}
-            sortSelected={sortSelected}
-          />
+          <ProductList products={props.productsData} changeView={changeView} />
 
-          {/* <div className="py-10 text-right">
+          <div className="py-10 flex justify-center">
             <ReactPaginate
               className="flex"
               previousLabel={"<"}
@@ -549,74 +477,7 @@ const AllCollectionsDetails = (props) => {
               }
               activeClassName={"bg-red-500 text-white"}
             />
-          </div> */}
-          {/* <div>
-            <div className="max-w-8xl mx-auto container py-10 text-right">
-              <ul className="flex justify-center items-center">
-                <li>
-                  <span className="p-1 flex rounded transition duration-150 ease-in-out text-base leading-tight font-bold text-gray-500 hover:text-red-500 focus:outline-none mr-1 sm:mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <polyline points="15 6 9 12 15 18" />
-                    </svg>
-                  </span>
-                </li>
-                <li>
-                  <span className="flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">
-                    1
-                  </span>
-                </li>
-                <li>
-                  <span className="flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer shadow transition duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">
-                    2
-                  </span>
-                </li>
-                <li>
-                  <span className="flex text-red-500 hover:bg-red-500 hover:text-white rounded transition duration-150 ease-in-out text-base leading-tight font-bold shadow px-3 py-2 focus:outline-none">
-                    ...
-                  </span>
-                </li>
-                <li>
-                  <span className="flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer transition shadow duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">
-                    6
-                  </span>
-                </li>
-                <li>
-                  <span className="flex text-red-500 hover:bg-red-500 hover:text-white text-base leading-tight font-bold cursor-pointer transition shadow duration-150 ease-in-out mx-2 sm:mx-4 rounded px-3 py-2 focus:outline-none">
-                    7
-                  </span>
-                </li>
-                <li>
-                  <span className="flex rounded transition duration-150 ease-in-out text-base leading-tight font-bold text-gray-500 hover:text-red-500 p-1 focus:outline-none ml-1 sm:ml-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <polyline points="9 6 15 12 9 18" />
-                    </svg>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

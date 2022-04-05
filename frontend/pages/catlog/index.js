@@ -8,7 +8,7 @@ const Catlog =()=>{
     return(
         <Layout>
             <div className={classes.layout}>
-                <h2>Catalog</h2>
+                <h2 className="text-white">Catalog</h2>
             </div>
            <CatalogMenu/>
         </Layout>
