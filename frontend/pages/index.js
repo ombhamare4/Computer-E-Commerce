@@ -1,19 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
-
-//CSS Imports Here
-import styles from "../styles/Home.module.css";
 //Componensts Import Here
 import Layout from "../components/Layout/Layout";
-import Account from "./account";
-import CarouselTest from "../components/Testing/Carousel";
-import Slider from "../components/Carsouel/Slider";
-import $ from "jquery";
-import Login from "../components/omcustomlogin/Login";
-import { images } from "../components/Carsouel/SliderImages";
-import CatalogMenu from "../components/CatalogMenu/CatalogMenu";
-import MultiItemCarousel from "../components/ProductSlider/ProductSlider";
-import { multiData } from "../components/ProductSlider/data";
 import SliderArrival from "../components/ProductSlider/SliderArrival";
 import HomeCarousel from "../components/Carsouel/HomeCarousel";
 import SliderBestseller from "../components/ProductSlider/SliderBestseller";
