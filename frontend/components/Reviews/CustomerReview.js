@@ -8,7 +8,7 @@ const CustomerReview = (props) => {
         <ul>
           {props.reviews.map((reviews) => (
             <li key={reviews.id}>
-              <CustomerReviewCard name={reviews.name} />
+              <CustomerReviewCard comment={reviews.comment}  rating={reviews.rating}/>
             </li>
           ))}
         </ul>

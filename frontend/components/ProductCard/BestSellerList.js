@@ -56,6 +56,7 @@ const BestSellerList = () => {
             <NewProductCard
             height={heightseller}
             imgheight={imageheight}
+            id={product._id}
               name={product.name}
               image={product.image}
               price={product.price.discountPrice}
