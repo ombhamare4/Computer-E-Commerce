@@ -29,12 +29,12 @@ const ProductDetail = (props) => {
         <link rel="icon" href="/Jupiterfull.png" />
       </Head>
 
-      <section className="text-gray-700 body-font overflow-hidden bg-white">
+      <section className="text-gray-700 body-font  bg-white">
         <div className="p-16">
           <div className="grid grid-cols-2 md:grid-cols-1">
-            <div className=" border mr-5 p-2 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-auto">
+            <div className=" border mr-5 p-2 rounded-lg  flex items-center justify-center  w-64 hover:overflow hover:z-10 ">
               <img
-                className="bg-white w-auto transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-150"
+                className="bg-white w-64 transition-all duration-500 ease-in-out transform bg-center bg-cover  hover:scale-150 "
                 src={image}
               />
             </div>
