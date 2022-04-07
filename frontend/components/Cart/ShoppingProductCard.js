@@ -34,12 +34,12 @@ const ShoppingProductCard = (props) => {
 
   return (
     <div className="my-2 p-2  relative hover:shadow-xl  transition-all duration-500 ease-in-out hover:scale-100">
-      <div className="grid grid-cols-4 gap-2 lg:grid-cols-2">
+      <div className="grid grid-cols-4 gap-2 lg:grid-cols-2 xs:grid-cols-1">
         <div className="flex justify-center">
           <img className="p-2 " src={props.image} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <h1 className="text-lg font-semibold mb-2">{props.name}</h1>
+          <h1 className="text-lg font-semibold mb-2 xs:text-md">{props.name}</h1>
           <div className="flex  items-center mb-2">
             <p className="text-lg mr-2 ">Rs.{discountPrice}</p>
             <FaTag />
