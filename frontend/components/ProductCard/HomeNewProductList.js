@@ -11,9 +11,6 @@ const HomeNewProductList = () => {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
   if (loading) return <p>loading</p>;
   if (error) return <p>Error Boss</p>;
-  console.log(data);
-  console.log(error);
-
   const options = {
     loop: true,
     dots: false,

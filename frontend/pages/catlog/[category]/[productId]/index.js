@@ -1,94 +1,29 @@
-import { useRouter } from "next/router";
-
 import ProductDetails from "../../../../components/ProductDetails/ProductDetail";
 import Layout from "../../../../components/Layout/Layout";
-import { gql } from "@apollo/client";
-import client from "../../../../api/appolo-client";
-import Loading from "../../../../components/Loading/Loading";
+import { useQuery } from "@apollo/client";
+import NewLoading from "../../../../components/Message/NewLoading";
+import NewError from "../../../../components/Message/NewError";
+import { GET_PRODUCT_BY_ID } from "../../../../graphql/query";
 
+const products = ({ params }) => {
+  const productId = params.productId;
 
-
-const products = ({ productId, productData, loading }) => {
-  const router = useRouter();
-  console.log("This is Router: "+router);
-  if (loading) return <Loading />;
+  const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, {
+    variables: { productId: productId },
+  });
+  if (loading) return <NewLoading />;
+  if (error) return <NewError />;
   return (
     <Layout>
-      <ProductDetails productData={productData}/>
+      <ProductDetails productData={data.productByID} />
     </Layout>
   );
 };
 
 export default products;
 
-export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: gql`
-      query products {
-        products {
-          _id
-          name
-          category
-        }
-      }
-    `,
-  });
-
+export function getServerSideProps(context) {
   return {
-    paths: data.products.map((product) => ({
-      params: {
-        productId: product._id,
-        category: product.category,
-      },
-    })),
-    fallback: false,
+    props: { params: context.params },
   };
-}
-
-export async function getStaticProps(context) {
-    console.log("Contex here: "+ context.params.productId);
-  const productId = context.params.category.productId;
-  const { data, loading } = await client.query({
-    query: gql`
-      query Product($productId: String!) {
-        productByID(productId: $productId) {
-          _id
-          name
-          image
-          price {
-            originalPrice
-            discountPrice
-          }
-          company
-          category
-          description
-          weight
-          available
-          reviews {
-            rating
-            comment
-          }
-          createdAt
-          updatedAt
-        }
-      }
-    `,
-    variables: { productId },
-  });
-
-  return {
-    props: {
-      productId: productId,
-      productData: data.productByID,
-      loading: loading,
-    },
-  };
-}
-
-// export const getServerSideProps = async ({ params }) => {
-//   return {
-//     props: {
-//       productId: params.productId,
-//     },
-//   };
-// };
+};
