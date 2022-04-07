@@ -4,9 +4,20 @@ import classes from "./CustomForm.module.css";
 import Button from "../UI/Button";
 
 const CustomForm = () => {
-    const [building,isBuilding] = useState('false');
-  const options = ["React", "Vue", "Angular"];
-  const [pselected, psetSelected] = useState("Choose One");
+  const [building,isBuilding] = useState('false');
+  const optionRam = ["Corsair","G.Skill","Kingston","HyperX","Adata"];
+  const [rselected, rsetSelected] = useState("Ram");
+  const optionStorage = ["HDD","SSD"];
+  const [sselected, ssetSelected] = useState("Storage");
+  const optionGraphic = ["Nvidia","AMD"];
+  const [gselected, gsetSelected] = useState("Graphic Card");
+  const optionOs = ["Windows 11","Windows 10","Windows 8"];
+  const [oselected, osetSelected] = useState("Operating system");
+  const optionProcessor = ["Intel","Ryzen"];
+  const [pselected, psetSelected] = useState("Processor");
+  const optionMother = ["MSI","Asus","Gigabyte","Aorus"];
+  const [mselected, msetSelected] = useState("MotherBoard");
+
 
   const checkValidation = () => {
           
@@ -17,42 +28,42 @@ const CustomForm = () => {
         <h3 className={classes.h3}>Pick the specs...</h3>
         <div className={classes.table}>
           <Dropdown
-            selected={pselected}
-            setSelected={psetSelected}
-            options={options}
+            selected={rselected}
+            setSelected={rsetSelected}
+            options={optionRam}
           />
           <Dropdown
-            selected={pselected}
-            setSelected={psetSelected}
-            options={options}
+            selected={sselected}
+            setSelected={ssetSelected}
+            options={optionStorage}
           />
           <Dropdown
-            selected={pselected}
-            setSelected={psetSelected}
-            options={options}
+            selected={gselected}
+            setSelected={gsetSelected}
+            options={optionGraphic}
           />
         </div>
         <div className={classes.table}>
           <Dropdown
-            selected={pselected}
-            setSelected={psetSelected}
-            options={options}
+            selected={oselected}
+            setSelected={osetSelected}
+            options={optionOs}
           />
           <Dropdown
             selected={pselected}
             setSelected={psetSelected}
-            options={options}
+            options={optionProcessor}
           />
           <Dropdown
-            selected={pselected}
-            setSelected={psetSelected}
-            options={options}
+            selected={mselected}
+            setSelected={msetSelected}
+            options={optionMother}
           />
         </div>
-      </form>
-      <div className={classes.box}>
-      <Button onClick={checkValidation}>Build</Button>
+        <div className={classes.box}>
+      <Button onClick={checkValidation} className={classes.btn}>Build</Button>
     </div>
+      </form>
     </>
   );
 };

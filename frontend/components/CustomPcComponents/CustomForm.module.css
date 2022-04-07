@@ -4,7 +4,11 @@
   font-weight: 600;
   line-height: 2rem; 
   padding: 0.75rem;
-  margin-top: 0.6rem;
+  
+}
+
+.form{
+    background-color: aqua;
 }
 
 .table{
@@ -14,8 +18,10 @@
 }
 
 .box{
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    width:100vw;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  justify-content: center;
 }
+
+
