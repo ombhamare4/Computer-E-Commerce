@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-
+import {url} from "./url"
 const client = new ApolloClient({
-    uri: "https://jupiter-admin-pannel.herokuapp.com/graphql",
+    uri: url,
     cache: new InMemoryCache(),
   });
 

@@ -7,6 +7,8 @@ import {
   gql,
 } from "@apollo/client";
 
+import { url } from "./url";
+
 const authContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -48,7 +50,7 @@ function useProvideAuth() {
 
   const createApolloClient = () => {
     const link = new HttpLink({
-      uri: "https://jupiter-admin-pannel.herokuapp.com/graphql",
+      uri: url,
       headers: getAuthHeaders(),
     });
 

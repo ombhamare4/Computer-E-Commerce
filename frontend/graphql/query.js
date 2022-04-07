@@ -1,22 +1,24 @@
 import { gql } from "@apollo/client";
 
-export const USER_BY_ID = gql`
-  query userById($userId: String!) {
-    userById(userId: $userId) {
+export const GET_PRODUCTS = gql`
+  query getProducts {
+    products {
       _id
-      email
-
-      cart {
-        product {
-          _id
-          name
-          image
-          price {
-            discountPrice
-            originalPrice
-          }
-        }
+      name
+      price {
+        originalPrice
+        discountPrice
       }
+      available
+      image
+      company
+      category
+      description
+      reviews {
+        rating
+        comment
+      }
+      createdAt
     }
   }
 `;
