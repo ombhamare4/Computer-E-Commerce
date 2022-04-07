@@ -2,24 +2,18 @@ import Link from "next/link";
 
 import styles from "./VProduct.module.css";
 
+import NewLoading from "../Message/NewLoading";
+import NewError from "../Message/NewError";
+
 import { FaRegHeart, FaRegEye, FaRegStar, FaStar } from "react-icons/fa";
 import { useAuth } from "../../api/authentication";
-import { useMutation, gql } from "@apollo/client";
-
-const ADD_TO_CART = gql`
-  mutation addToCart($productId: String!, $userId: String!) {
-    addToCart(productID: $productId, userID: $userId) {
-      product {
-        name
-      }
-    }
-  }
-`;
+import { useMutation } from "@apollo/client";
+import { ADD_TO_CART } from "../../graphql/mutation";
 
 const VProductCard = (props) => {
   const { isSignedIn, userID } = useAuth();
 
-  const [addToCart] = useMutation(ADD_TO_CART);
+  const [addToCart, { loading, error }] = useMutation(ADD_TO_CART);
 
   const addProductHandler = (event) => {
     const productId = event.target.value;
@@ -27,6 +21,9 @@ const VProductCard = (props) => {
       addToCart({ variables: { productId: productId, userId: userID } });
     }
   };
+
+  if (loading) return <NewLoading />;
+  if (error) return <NewError />;
   return (
     <div className="text-center p-2 mb-2 text-md relative hover:shadow-xl  hover:rounded-lg   transition-all duration-500 ease-in-out hover:scale-110">
       <Link href={`products/${props.id}`}>
@@ -65,7 +62,7 @@ const VProductCard = (props) => {
         >
           + Add to Cart
         </button>
-        <button onClick={addProductHandler} className={styles.addCart}>
+        <button value={props.id} onClick={addProductHandler} className={styles.addCart}>
           +
         </button>
         <FaRegHeart className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white" />

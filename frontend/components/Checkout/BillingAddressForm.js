@@ -8,21 +8,21 @@ import { CREATE_ORDER } from "../../graphql/mutation";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
-const BillingAddressForm = (props) => {
+import NewLoading from "../Message/NewLoading";
+import NewError from "../Message/NewError";
 
+const BillingAddressForm = (props) => {
   const router = useRouter();
 
   const { userID } = useAuth();
 
-  const [createOrderUser,{ data, loding, error }] = useMutation(CREATE_ORDER,{
-    onCompleted:data=>{
-      router.push('/')
-    },
-    onError:error=>{
-      console.log(error);
-    }
-  });
-
+  const [createOrderUser, { data, loding, error }] = useMutation(CREATE_ORDER);
+  if (loding) return <NewLoading />;
+  if (error) return <NewError />;
+  console.log(data);
+  if(data){
+    router.push('/')
+  }
   const streetRef = useRef();
   const landmarkRef = useRef();
 
@@ -154,6 +154,8 @@ const BillingAddressForm = (props) => {
 
     pinCodeInputResetHandler();
   };
+
+
   return (
     <Card className={classes.form}>
       <form onSubmit={formSubmissionHandler}>

@@ -62,3 +62,31 @@ export const GET_PRODUCT_BY_CATEGORY = gql`
     }
   }
 `;
+
+export const USER_BY_ID = gql`
+  query userById($userId: String!) {
+    userById(userId: $userId) {
+      _id
+      email
+      cart {
+        product {
+          _id
+          name
+          description
+          price {
+            discountPrice
+            originalPrice
+          }
+          company
+          category
+          image
+          available
+        }
+      }
+      name {
+        firstName
+        lastName
+      }
+    }
+  }
+`;

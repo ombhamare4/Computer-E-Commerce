@@ -48,3 +48,25 @@ export const CREATE_ORDER = gql`
     }
   }
 `;
+
+
+export const ADD_TO_CART = gql`
+mutation addToCart($productId: String!, $userId: String!) {
+  addToCart(productID: $productId, userID: $userId) {
+    product {
+      name
+    }
+  }
+}
+`;
+
+
+export const REMOVE_FROM_CART = gql`
+  mutation RemoveFromCart($productId: String!, $userId: String!) {
+    removeFromCart(productID: $productId, userID: $userId) {
+      product {
+        name
+      }
+    }
+  }
+`;

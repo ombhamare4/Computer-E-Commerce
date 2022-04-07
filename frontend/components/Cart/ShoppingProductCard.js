@@ -1,39 +1,29 @@
 import { FaTag, FaStar, FaRegStar } from "react-icons/fa";
 import Link from "next/link";
 import { useMutation, gql } from "@apollo/client";
-import { useAuth } from "../../api/authentication";
-import {USER_BY_ID} from "../../graphql/query"
 
-const REMOVE_FROM_CART = gql`
-  mutation RemoveFromCart($productId: String!, $userId: String!) {
-    removeFromCart(productID: $productId, userID: $userId) {
-      product {
-        name
-      }
-    }
-  }
-`;
+import { useAuth } from "../../api/authentication";
+import { USER_BY_ID } from "../../graphql/query";
+import { REMOVE_FROM_CART } from "../../graphql/mutation";
+
+import { currencyConverter } from "../../hooks/currencyConverter";
+
+import NewLoading from "../Message/NewLoading";
+import NewError from "../Message/NewError";
 
 const ShoppingProductCard = (props) => {
-  const {userID} = useAuth();
-  const [removeFromCart] = useMutation(REMOVE_FROM_CART,{
-    refetchQueries:[USER_BY_ID,'userById']
+  const { userID } = useAuth();
+  const [removeFromCart, { loading, error }] = useMutation(REMOVE_FROM_CART, {
+    refetchQueries: [USER_BY_ID, "userById"],
   });
-
-  var x = props.price;
-  x = x.toString();
-  var lastThree = x.substring(x.length - 3);
-  var otherNumbers = x.substring(0, x.length - 3);
-  if (otherNumbers != "") lastThree = "," + lastThree;
-  var discountPrice =
-    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
 
   const removeProductHandler = (event) => {
     const productId = event.target.value;
     removeFromCart({ variables: { productId: productId, userId: userID } });
   };
 
-
+  if (loading) return <NewLoading />;
+  if (error) return <NewError />;
 
   return (
     <div className="my-2 p-2  relative hover:shadow-xl  transition-all duration-500 ease-in-out hover:scale-100">
@@ -42,9 +32,11 @@ const ShoppingProductCard = (props) => {
           <img className="p-2 " src={props.image} />
         </div>
         <div className="col-span-2 lg:col-span-1">
-          <h1 className="text-lg font-semibold mb-2 xs:text-md">{props.name}</h1>
+          <h1 className="text-lg font-semibold mb-2 xs:text-md">
+            {props.name}
+          </h1>
           <div className="flex  items-center mb-2">
-            <p className="text-lg mr-2 ">Rs.{discountPrice}</p>
+            <p className="text-lg mr-2 ">Rs.{currencyConverter(props.price)}</p>
             <FaTag />
           </div>
           <div className="flex  lg:block ">
