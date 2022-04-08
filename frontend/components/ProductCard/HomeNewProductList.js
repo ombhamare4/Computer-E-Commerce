@@ -49,7 +49,7 @@ const HomeNewProductList = () => {
         </h1>
       </div>
       <OwlCarousel className="owl-theme owl-loaded" {...options}>
-        {data.products.slice(0, 10).map((product) => (
+        {data.products.slice(0).reverse().slice(0,8).map((product) => (
           <div key={product._id} className="item">
             <NewProductCard
             height= {heightnew}
