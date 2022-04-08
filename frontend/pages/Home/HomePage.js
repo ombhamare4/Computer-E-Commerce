@@ -3,6 +3,7 @@ import HomeCarousel from "../../components/Carsouel/HomeCarousel";
 import HomeNewProductList from "../../components/ProductCard/HomeNewProductList";
 import BestSellerList from "../../components/ProductCard/BestSellerList";
 import DealOfTheDay from "../../components/ProductCard/DealOfTheDay";
+import NewLoading from "../../components/Message/NewLoading";
 const HomePage = () => {
   return (
     <div>

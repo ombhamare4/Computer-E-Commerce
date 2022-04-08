@@ -6,11 +6,13 @@ const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
 import NewProductCard from "./NewProductCard";
 import { GET_PRODUCTS } from "../../graphql/query";
 import { useQuery } from "@apollo/client";
+import NewLoading from "../Message/NewLoading";
+import NewError from "../Message/NewError"
 
 const BestSellerList = () => {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
-  if (loading) return <p>loading</p>;
-  if (error) return <p>Error Boss</p>;
+  if (loading) return <NewLoading/>;
+  if (error) return <NewError/>;
   const options = {
     loop: true,
     dots: false,
