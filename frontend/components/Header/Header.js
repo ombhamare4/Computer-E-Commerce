@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { useState } from "react";
-// import 'alpinejs';
 import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { BiExit } from "react-icons/bi";
 import { useRouter } from "next/router";
-import CollectionNavbar from "../CollectionNavbar/CollectionNavbar";
 import styles from "./Header.module.css";
 import { useAuth } from "../../api/authentication";
 
@@ -43,25 +41,29 @@ const Header = () => {
             <div className="hidden md:block xs:text-sm">
               <div className="">
                 {!isSignedIn() && (
-                  <div className={styles.btn1}>
-                    <Link href="/account">
-                      <div className="flex justify-center items-center cursor-pointer">
-                        <FaUserAlt />
-                        <span className="mx-2 xs:text-sm xs:mx-0">Sign In</span>
+                  <Link href="/account">
+                    <div>
+                      <div className={styles.btn1}>
+                        <div className="flex justify-center items-center cursor-pointer">
+                          <FaUserAlt />
+                          <span className="mx-2 xs:text-sm xs:mx-0">
+                            Sign In
+                          </span>
+                        </div>
                       </div>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 )}
                 {isSignedIn() && (
                   <div className="flex">
-                    <div className={styles.btn1}>
-                      <Link href={`/cart/${userID}`}>
+                    <Link href={`/cart/${userID}`}>
+                      <div className={styles.btn1}>
                         <div className="flex justify-center items-center cursor-pointer">
                           <FaShoppingCart />
                           <span className="mx-2 xs:text-sm xs:mx-0">Cart</span>
                         </div>
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
                     <div className={styles.btn1}>
                       <button
                         className="flex justify-center items-center cursor-pointer"
@@ -88,25 +90,25 @@ const Header = () => {
           </div>
           <div className="flex justify-center text-xl md:hidden">
             {!isSignedIn() && (
-              <div className={styles.btn1}>
-                <Link href="/account">
+              <Link href="/account">
+                <div className={styles.btn1}>
                   <div className="flex justify-center items-center cursor-pointer">
                     <FaUserAlt />
                     <span className="mx-2">Sign In</span>
                   </div>
-                </Link>
-              </div>
+                </div>
+              </Link>
             )}
             {isSignedIn() && (
               <div className="flex">
-                <div className={styles.btn1}>
-                  <Link href={`/cart/${userID}`}>
+                <Link href={`/cart/${userID}`}>
+                  <div className={styles.btn1}>
                     <div className="flex justify-center items-center cursor-pointer">
                       <FaShoppingCart />
                       <span className="mx-2">Cart</span>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
                 <div className={styles.btn1}>
                   <button
                     className="flex justify-center items-center cursor-pointer"
@@ -122,18 +124,18 @@ const Header = () => {
         </div>
         <div className="md:hidden">
           <div className="flex justify-evenly items-center mt-2">
-            <div className={styles.btn1}>
-              <Link href="/">Home</Link>
-            </div>
-            <div className={styles.btn1 + " " + styles.dropdown}>
-              <Link href="/catlog">Catlog</Link>
-            </div>
-            <div className={styles.btn1}>
-              <Link href="/collections">All Collection</Link>
-            </div>
-            <div className={styles.btn1}>
-              <Link href="/customcomputer">Custom Computer</Link>
-            </div>
+            <Link href="/">
+              <div className={styles.btn1}>Home</div>
+            </Link>
+            <Link href="/catlog">
+              <div className={styles.btn1 + " " + styles.dropdown}>Catlog</div>
+            </Link>
+            <Link href="/collections">
+              <div className={styles.btn1}>All Collection</div>
+            </Link>
+            <Link href="/customcomputer">
+              <div className={styles.btn1}>Custom Computer</div>
+            </Link>
           </div>
         </div>
         <div className=" md:px-3 xs:px-0 mt-2">
@@ -154,29 +156,32 @@ const Header = () => {
             {isToggle && (
               <div>
                 <div className="">
-                  <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
-                    <Link href="/">Home</Link>
-                  </div>
-                  <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
-                    <Link href="/catlog">Catlog</Link>
-                  </div>
-                  <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
-                    <Link href="/collections">All Collection</Link>
-                  </div>
-                  <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
-                    <Link href="/customcomputer">Custom Computer</Link>
-                  </div>
+                  <Link href="/">
+                    <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
+                      Home
+                    </div>
+                  </Link>
+                  <Link href="/catlog">
+                    <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
+                      Catlog
+                    </div>
+                  </Link>
+                  <Link href="/collections">
+                    <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
+                      All Collection
+                    </div>
+                  </Link>
+                  <Link href="/customcomputer">
+                    <div className="text-center p-2 transition-all duration-200 hover:text-white hover:bg-red-500">
+                      Custom Computer
+                    </div>
+                  </Link>
                 </div>
               </div>
             )}
           </div>
         </div>
       </div>
-
-      {/* collections  */}
-      {/* <div className={styles.collections}>
-        <CollectionNavbar id="collectionnavbar" />
-      </div> */}
     </div>
   );
 };
