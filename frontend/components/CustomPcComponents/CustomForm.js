@@ -2,9 +2,10 @@ import Dropdown from "./DropdownMenu";
 import { useState } from "react";
 import classes from "./CustomForm.module.css";
 import Button from "../UI/Button";
+import ComponentObtained from "./ComponentObtained";
 
 const CustomForm = () => {
-  const [building,isBuilding] = useState('false');
+  const [isBuilding,setIsBuilding] = useState('false');
   const optionRam = ["Corsair","G.Skill","Kingston","HyperX","Adata"];
   const [rselected, rsetSelected] = useState("Ram");
   const optionStorage = ["HDD","SSD"];
@@ -20,11 +21,14 @@ const CustomForm = () => {
 
 
   const checkValidation = () => {
-          
+    setIsBuilding(true);
+    if(rselected !== "Ram" && sselected !== "Storage" && gselected !== "Graphic Card" && oselected !== "Operating system" && pselected !== "Processor" && mselected !== "MotherBoard"){
+    setIsBuilding(true);
+    }
 }
   return (
     <>
-      <form>
+      <form >
         <h3 className={classes.h3}>Pick the specs...</h3>
         <div className={classes.table}>
           <Dropdown
@@ -61,9 +65,11 @@ const CustomForm = () => {
           />
         </div>
         <div className={classes.box}>
-      <Button onClick={checkValidation} className={classes.btn}>Build</Button>
+        < Button onClick={checkValidation} className={classes.btn}>Build</Button>
     </div>
       </form>
+      {/* {isBuilding && < Button onClick={checkValidation} className={classes.btn}>Build</Button>}
+      {!isBuilding && <ComponentObtained/>} */}
     </>
   );
 };
