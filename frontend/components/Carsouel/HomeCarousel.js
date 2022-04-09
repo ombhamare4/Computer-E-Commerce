@@ -64,7 +64,7 @@ const HomeCarousel = () => {
           />
         </div>
       </OwlCarousel>
-      ;
+      
     </div>
   );
 };
