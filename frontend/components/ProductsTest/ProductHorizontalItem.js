@@ -1,4 +1,5 @@
 import HProductCard from "../ProductCard/HProductCard";
+import { currencyConverter } from "../../hooks/currencyConverter";
 const ProductHorizontalItem = (props) => {
   return (
     <div>
@@ -6,10 +7,9 @@ const ProductHorizontalItem = (props) => {
         id={props.id}
         image={props.image}
         name={props.name}
-        price={props.price}
-        comparedPrice={props.comparedPrice}
+        originalPrice={currencyConverter(props.originalPrice)}
+        discountPrice={currencyConverter(props.discountPrice)}
         category={props.category}
-        subcategory={props.subcategory}
       />
     </div>
   );

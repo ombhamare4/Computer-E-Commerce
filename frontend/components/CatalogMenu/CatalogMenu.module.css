@@ -17,7 +17,6 @@
 .element img {
   height: 240px;
   width: 240px;
-  /* border: solid black 2px; */
 }
 
 .element h3 {
@@ -26,7 +25,7 @@
   text-align: center;
   font-size: 1.5rem;
   font-weight: 500;
-  color: coral;
+  color: rgb(239 68 68);
 }
 
 .element:hover {

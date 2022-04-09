@@ -1,5 +1,6 @@
 import VProductCard from "../ProductCard/VProductCard";
-import HProductCard from "../ProductCard/HProductCard";
+import {currencyConverter} from "../../hooks/currencyConverter"
+
 const ProductVerticlItem = (props) => {
   return (
     <div>
@@ -7,12 +8,10 @@ const ProductVerticlItem = (props) => {
         id={props.id}
         image={props.image}
         name={props.name}
-        price={props.price}
-        comparedPrice={props.comparedPrice}
+        originalPrice = {currencyConverter(props.originalPrice)}
+        discountPrice = {currencyConverter( props.discountPrice)}
         category={props.category}
-        subcategory={props.subcategory}
       />
-      {/* <HProductCard id={props.id} image={props.image} name={props.name} /> */}
     </div>
   );
 };

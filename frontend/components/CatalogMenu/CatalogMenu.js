@@ -1,5 +1,5 @@
 import classes from "./CatalogMenu.module.css";
-
+import Link from "next/link";
 const CatalogItem = [
   {
     id: "c1",
@@ -50,12 +50,12 @@ const CatalogItem = [
   },
   {
     id: "c9",
-    title: "Ram",
+    title: "RAM",
     image: "https://www.memoryc.com/images/products/bb/image_4170691.jpg",
   },
   {
     id: "c10",
-    title: "Storage",
+    title: "HDD & SSD",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ46KG1YRx18YQ92uKREeYEKyAB6v1wHLkdIg&usqp=CAU",
   },
@@ -72,13 +72,13 @@ const CatalogItem = [
   },
   {
     id: "c13",
-    title: "Cooling Fan",
+    title: "Cooling Fans",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7QebDkFuffxSidhsqk5mb2MQSz_TYmVg40Q&usqp=CAU",
   },
   {
     id: "c14",
-    title: "Power Supply Unit",
+    title: "Power Supply",
     image: "https://m.media-amazon.com/images/I/51oB1WBy29L.jpg",
   },
   {
@@ -121,14 +121,14 @@ const CatalogItem = [
   },
   {
     id: "c22",
-    title: "Gaming Consoles",
+    title: "Consoles",
     image:
       "https://www.ubuy.co.in/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNjFuUGo3UmItNEwuX1NMMTEwMF8uanBn.jpg",
   },
   {
     id: "c23",
-    title: "Desk",
-    image: "https://m.media-amazon.com/images/I/91PrtuB+AKL._SL1500_.jpg",
+    title: "Games",
+    image: "https://m.media-amazon.com/images/I/81Ow0EK3azL._SL1500_.jpg",
   },
   {
     id: "c24",
@@ -142,16 +142,20 @@ const CatalogMenu = () => {
     <ul className={classes.layout}>
       {CatalogItem.map((item) => {
         return (
-          <li
-            className={classes.element}
-            onClick={() => {
-              console.log(item.title);
-            }}
-            key={item.id}
-          >
-            <img src={item.image} />
-            <h3>{item.title}</h3>
-          </li>
+          <Link href={`/catlog/${item.title}`}  key={item.id}>
+            <li
+              className={classes.element}
+              key={item.id}
+            >
+              <div className=" p-3 rounded-lg  flex items-center justify-center  overflow-hidden object-cover w-full">
+                <img
+                  src={item.image}
+                  className="bg-white  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-100"
+                />
+              </div>
+              <h3 className="text-red-500">{item.title}</h3>
+            </li>
+          </Link>
         );
       })}
     </ul>
