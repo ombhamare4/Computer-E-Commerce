@@ -6,7 +6,10 @@
   height: 100vh;
   z-index: 99;
   background: rgba(255, 255, 255, 0.755);
-  background-image: url("../../assests/cartloading.gif");
+  /* background-image: url("../../assests/cartloading.gif"); */
+  background-image: url("https://miro.medium.com/max/1400/1*CsJ05WEGfunYMLGfsT2sXA.gif");
+  /* background-image: url("https://cdn.dribbble.com/users/765253/screenshots/2540865/loader.gif"); */
+  /* background-image: url("https://cdn.dribbble.com/users/516022/screenshots/6413056/2.gif"); */
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;

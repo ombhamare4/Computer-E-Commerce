@@ -7,7 +7,7 @@ const ProductList = (props) => {
   return (
     <div>
       {props.changeView && (
-        <ul className="grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+        <ul className="grid grid-cols-3 md:grid-cols-2 ">
           {props.products.map((products) => (
             <li key={products._id}>
               <ProductVerticlItem

@@ -1,12 +1,31 @@
 import Head from "next/head";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import CustomerReview from "../Reviews/CustomerReview";
-
 import { currencyConverter } from "../../hooks/currencyConverter";
+import { useAuth } from "../../api/authentication";
+import { useMutation } from "@apollo/client";
+import { ADD_TO_CART } from "../../graphql/mutation";
+import NewLoading from "../Message/NewLoading";
+import NewError from "../Message/NewError";
 
 const ProductDetail = (props) => {
   const text = props.productData.description;
   const formatedText = text.replace(/\r?\n|\r/g, " ");
+
+  const { isSignedIn, userID } = useAuth();
+
+  const [addToCart, { loading, error }] = useMutation(ADD_TO_CART);
+
+  const addToCartHandler = (event) => {
+    const productId = event.target.value;
+    if (isSignedIn()) {
+      addToCart({ variables: { productId: productId, userId: userID } });
+    }
+  };
+
+  if (loading) return <NewLoading />;
+  if (error) return <NewError />;
+
   return (
     <div>
       <Head>
@@ -50,8 +69,12 @@ const ProductDetail = (props) => {
                   </span>
                 </span>
                 <div className="flex  xs:mt-5">
-                  <button className=" text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                    Buy
+                  <button
+                    onClick={addToCartHandler}
+                    value={props.productData._id}
+                    className=" text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                  >
+                    Add to Cart
                   </button>
                   <button className="rounded-full w-10 h-10 bg-red-500 p-0 border-0 inline-flex items-center justify-center text-white ml-4">
                     <svg

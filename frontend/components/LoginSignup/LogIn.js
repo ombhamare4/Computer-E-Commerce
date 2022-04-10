@@ -18,10 +18,11 @@ const LogIn = () => {
     const email = emailRef.current.value.toString();
     const password = passwordRef.current.value.toString();
     signIn({ email, password });
-    if(isSignedIn()){
-      router.push(`/`);
-    }
   };
+
+  if(isSignedIn()){
+    router.push(`/`);
+  }
 
   return (
     <Card className={classes.form}>

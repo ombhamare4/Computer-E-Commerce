@@ -152,9 +152,9 @@ const AllCollectionsDetails = (props) => {
           </div>
         </div>
         <div className="col-span-3">
-          <div>
-            <h1 className="text-xl p-2">Products</h1>
-            <div className="p-2 border border-red-500 rounded-md flex justify-between items-center xs:block">
+          <div >
+            <h1 className="text-xl p-2 hidden xs:block">Products</h1>
+            <div className="p-2 border border-red-500 rounded-md flex justify-between items-center xs:hidden">
               <div className="flex xs:justify-center xs:pb-2">
                 <button onClick={gridViewHandler}>
                   <CgMenuGridR className="border border-gray-500 rounded-md text-4xl p-1 mx-2 xs:text-md" />

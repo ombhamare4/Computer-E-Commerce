@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "./VProduct.module.css";
 
 import { FaRegHeart, FaRegEye, FaRegStar, FaStar } from "react-icons/fa";
 import { useAuth } from "../../api/authentication";

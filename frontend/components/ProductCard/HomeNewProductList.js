@@ -39,6 +39,7 @@ const HomeNewProductList = () => {
       },
     },
   };
+
   const heightnew = "h-56  lm:h-96 xs:h-40"
   const imageheight = "xs:h-40"
   return (

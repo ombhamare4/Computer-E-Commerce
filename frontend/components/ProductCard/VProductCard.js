@@ -28,9 +28,9 @@ const VProductCard = (props) => {
     <div className="text-center p-2 mb-2 text-md relative hover:shadow-xl  hover:rounded-lg   transition-all duration-500 ease-in-out hover:scale-110">
       <Link href={`products/${props.id}`}>
         <div>
-          <div className="rounded-lg  relative flex items-center justify-center overflow-hidden object-cover h-96">
+          <div className="rounded-lg  relative flex items-center justify-center overflow-hidden object-cover h-96 xs:h-24">
             <img
-              className="bg-white absolute  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
+              className="bg-white xs:w-24 absolute  transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
               src={props.image}
             />
           </div>
@@ -62,11 +62,15 @@ const VProductCard = (props) => {
         >
           + Add to Cart
         </button>
-        <button value={props.id} onClick={addProductHandler} className={styles.addCart}>
+        <button
+          value={props.id}
+          onClick={addProductHandler}
+          className={styles.addCart}
+        >
           +
         </button>
-        <FaRegHeart className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white" />
-        <FaRegEye className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white" />
+        <FaRegHeart className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white xs:hidden" />
+        <FaRegEye className="mx-2 text-4xl bg-red-500  rounded-full  p-2 text-white xs:hidden" />
       </div>
     </div>
   );
