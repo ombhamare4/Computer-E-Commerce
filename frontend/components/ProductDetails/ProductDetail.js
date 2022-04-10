@@ -20,8 +20,8 @@ const ProductDetail = (props) => {
           <div className="grid grid-cols-2 md:grid-cols-1">
             <div className=" border mr-5 p-2 rounded-lg  flex items-center justify-center  w-64 hover:overflow hover:z-10 ">
               <img
-                className="bg-white w-64 transition-all duration-500 ease-in-out transform bg-center bg-cover  hover:scale-150 "
-                src={image}
+                className="bg-white w-auto transition-all duration-500 ease-in-out transform bg-center bg-cover  hover:scale-150 "
+                src={props.productData.image}
               />
             </div>
             <div className="">
