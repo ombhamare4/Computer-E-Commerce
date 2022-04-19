@@ -14,7 +14,7 @@ const HomeCarousel = () => {
         autoplayTimeout={5000}
         animateOut="fadeOut"
       >
-        <div class="item">
+        <div className="item">
           <div className="absolute w-96 xs:w-52 inset-y-28 inset-x-36 lm:inset-x-10 lm:inset-y-20 md:inset-y-16 xs:inset-y-5">
             <h1 className=" text-4xl font-bold text-center xs:text-lg">
             Save 35% on all Gadeget
@@ -30,7 +30,7 @@ const HomeCarousel = () => {
             className="w-full"
           />
         </div>
-        <div class="item">
+        <div className="item">
           <div className="absolute w-96 xs:w-52 inset-y-28 inset-x-36 lm:inset-x-10 lm:inset-y-20 md:inset-y-16 xs:inset-y-5">
             <h1 className=" text-4xl font-bold text-center xs:text-lg">
               Google Home Bluthooth Speaker
@@ -47,7 +47,7 @@ const HomeCarousel = () => {
           />
         </div>
 
-        <div class="item">
+        <div className="item">
           <div className="absolute w-96 xs:w-52 inset-y-28 inset-x-36 lm:inset-x-10 lm:inset-y-20 md:inset-y-16 xs:inset-y-5">
             <h1 className=" text-4xl font-bold text-center xs:text-lg">
               Google Products
@@ -64,7 +64,7 @@ const HomeCarousel = () => {
           />
         </div>
       </OwlCarousel>
-      
+
     </div>
   );
 };

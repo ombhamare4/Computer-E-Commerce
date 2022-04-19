@@ -90,3 +90,18 @@ export const USER_BY_ID = gql`
     }
   }
 `;
+
+export const PROUDUT_BY_NAME = gql`
+  query productByName($productName: String!, $collectionName: String!) {
+    productByName(productName: $productName, collectionName: $collectionName) {
+      _id
+      name
+      image
+      category
+      price {
+        originalPrice
+        discountPrice
+      }
+    }
+  }
+`;

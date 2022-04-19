@@ -2,9 +2,16 @@ import Dropdown from "./DropdownMenu";
 import { useState } from "react";
 import classes from "./CustomForm.module.css";
 import Button from "../UI/Button";
-import ComponentObtained from "./ComponentObtained";
+
+import CustomRam from "./Parts/CustomRam";
+import CustomGraphicCard from "./Parts/CustomGraphicCard";
+import CustomProcessor from "./Parts/CustomProcessor";
+import CustomOS from "./Parts/CustomOs";
+import CustomMotherBoard from "./Parts/CustomMotherBoard";
+import CustomStorage from "./Parts/CustomStorage";
 
 const CustomForm = () => {
+  const [visible, setVisible] = useState(false);
   const [isBuilding, setIsBuilding] = useState("false");
   const optionRam = ["Corsair", "G.Skill", "Kingston", "HyperX", "Adata"];
   const [rselected, rsetSelected] = useState("Ram");
@@ -29,6 +36,7 @@ const CustomForm = () => {
       mselected !== "MotherBoard"
     ) {
       setIsBuilding(true);
+      setVisible(true);
     }
   };
   return (
@@ -70,16 +78,27 @@ const CustomForm = () => {
               options={optionMother}
             />
           </div>
-          </div>
-          <div className={classes.box}>
-            <Button onClick={checkValidation} className={classes.btn}>
-              Build
-            </Button>
-          </div>
-        
+        </div>
+        <div className={classes.box}>
+          <Button onClick={checkValidation} className={classes.btn}>
+            Build
+          </Button>
+        </div>
       </form>
       {/* {isBuilding && < Button onClick={checkValidation} className={classes.btn}>Build</Button>}
       {!isBuilding && <ComponentObtained/>} */}
+      {visible && (
+        <div className="bg-white p-3">
+          <div>
+            <CustomRam ram={rselected} />
+            {/* <CustomGraphicCard graphiccard={gselected} /> */}
+            {/* <CustomMotherBoard motherboard={mselected}/> */}
+            {/* <CustomOS os={oselected}/> */}
+            {/* <CustomProcessor processor={pselected}/> */}
+            {/* <CustomStorage storage={sselected}/> */}
+          </div>
+        </div>
+      )}
     </>
   );
 };
