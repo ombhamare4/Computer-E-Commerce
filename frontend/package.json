@@ -29,6 +29,7 @@
     "react-paginate": "^8.1.0",
     "react-responsive-carousel": "^3.2.22",
     "styled-components": "^5.3.5",
+    "styled-jsx": "^5.0.2",
     "swiper": "^7.4.1",
     "webpack": "^5.66.0"
   },
