@@ -19,9 +19,9 @@ const CustomOS = (props) => {
   if (loading) return <NewLoading />;
   if (error) return <NewError />;
 
-  if (data.productByName.length == 0) {
-    setIsEmpty(false);
-  }
+  // if (data.productByName.length == 0) {
+  //   setIsEmpty(false);
+  // }
 
   const options = {
     loop: true,
@@ -52,10 +52,10 @@ const CustomOS = (props) => {
   const imageheight = "xs:h-40";
 
   return (
-    <div className="bg-white  rounded-lg border-2 border-red-500">
+    <div className="bg-white  rounded-lg border-2 border-red-500 mt-2">
       <div className="flex">
         <h1 className="text-xl text-white font-bold bg-red-500 p-2 rounded-r-full">
-          Rams
+          Operating System
         </h1>
       </div>
       {!isempty && (

@@ -13,15 +13,15 @@ import NewProductCard from "../../ProductCard/NewProductCard";
 const CustomStorage = (props) => {
   const [isempty, setIsEmpty] = useState(true);
   const { data, loading, error } = useQuery(PROUDUT_BY_NAME, {
-    variables: { productName: props.storage, collectionName: "HDD && SSD" },
+    variables: { productName: "HDD & SSD", collectionName: "HDD && SSD" },
   });
 
   if (loading) return <NewLoading />;
   if (error) return <NewError />;
 
-  if (data.productByName.length == 0) {
-    setIsEmpty(false);
-  }
+  // if (data.productByName.length == 0) {
+  //   setIsEmpty(false);
+  // }
 
   const options = {
     loop: true,
@@ -52,10 +52,10 @@ const CustomStorage = (props) => {
   const imageheight = "xs:h-40";
 
   return (
-    <div className="bg-white  rounded-lg border-2 border-red-500">
+    <div className="bg-white  rounded-lg border-2 border-red-500 mt-2">
       <div className="flex">
         <h1 className="text-xl text-white font-bold bg-red-500 p-2 rounded-r-full">
-          Rams
+          Storage
         </h1>
       </div>
       {!isempty && (

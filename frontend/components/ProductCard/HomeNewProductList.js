@@ -8,12 +8,12 @@ import { GET_PRODUCTS } from "../../graphql/query";
 import { useQuery } from "@apollo/client";
 
 import NewLoading from "../Message/NewLoading";
-import NewError from "../Message/NewError"
+import NewError from "../Message/NewError";
 
 const HomeNewProductList = () => {
   const { data, loading, error } = useQuery(GET_PRODUCTS);
-  if (loading) return <NewLoading/>;
-  if (error) return <NewError/>;
+  if (loading) return <NewLoading />;
+  if (error) return <NewError />;
 
   const options = {
     loop: true,
@@ -40,8 +40,8 @@ const HomeNewProductList = () => {
     },
   };
 
-  const heightnew = "h-56  lm:h-96 xs:h-40"
-  const imageheight = "xs:h-40"
+  const heightnew = "h-56  lm:h-96 xs:h-40";
+  const imageheight = "xs:h-40";
   return (
     <div className="bg-white p-2 rounded-lg border-2 border-red-500">
       <div className="flex">
@@ -50,18 +50,22 @@ const HomeNewProductList = () => {
         </h1>
       </div>
       <OwlCarousel className="owl-theme owl-loaded" {...options}>
-        {data.products.slice(0).reverse().slice(0,8).map((product) => (
-          <div key={product._id} className="item">
-            <NewProductCard
-            height= {heightnew}
-            imgheight={imageheight}
-            id={product._id}
-              name={product.name}
-              image={product.image}
-              price={product.price.discountPrice}
-            />
-          </div>
-        ))}
+        {data.products
+          .slice(0)
+          .reverse()
+          .slice(0, 8)
+          .map((product) => (
+            <div key={product._id} className="item">
+              <NewProductCard
+                height={heightnew}
+                imgheight={imageheight}
+                id={product._id}
+                name={product.name}
+                image={product.image}
+                price={product.price.discountPrice}
+              />
+            </div>
+          ))}
       </OwlCarousel>
     </div>
   );

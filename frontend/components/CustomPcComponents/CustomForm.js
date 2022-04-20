@@ -91,11 +91,11 @@ const CustomForm = () => {
         <div className="bg-white p-3">
           <div>
             <CustomRam ram={rselected} />
-            {/* <CustomGraphicCard graphiccard={gselected} /> */}
-            {/* <CustomMotherBoard motherboard={mselected}/> */}
-            {/* <CustomOS os={oselected}/> */}
-            {/* <CustomProcessor processor={pselected}/> */}
-            {/* <CustomStorage storage={sselected}/> */}
+            <CustomStorage storage={sselected} />
+            <CustomGraphicCard graphiccard={gselected} />
+            <CustomOS os={oselected} />
+            <CustomProcessor processor={pselected} />
+            <CustomMotherBoard motherboard={mselected} />
           </div>
         </div>
       )}
